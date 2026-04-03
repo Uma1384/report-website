@@ -1,0 +1,1262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Freadom Impact Report · CCS Schools · 2025–26</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800;900&family=Nunito+Sans:ital,wght@0,300;0,400;0,600;1,300&display=swap" rel="stylesheet"/>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
+<style>
+:root {
+  --pur:#6B3FA0; --pur2:#8B5CC8; --pur3:#B48EE0; --pur-bg:#F2ECFB; --pur-bg2:#E8DEFF;
+  --org:#F5821F; --org-bg:#FEF0E4;
+  --grn:#1AA060; --grn2:#25C278; --grn-bg:#E6F7EE;
+  --red:#D93030; --red-bg:#FDEAEA;
+  --amb:#C47800; --amb2:#F5C518; --amb-bg:#FEF6E4;
+  --blu:#1E6FC0; --blu-bg:#E8F1FB;
+  --bg:#F7F4FC; --srf:#FFF; --srf2:#F2ECFB;
+  --ink:#18102C; --ink2:#4A4060; --ink3:#8A80A0;
+  --brd:rgba(107,63,160,.11); --brd2:rgba(107,63,160,.22);
+  --r:14px; --rs:9px;
+  --sh:0 2px 14px rgba(107,63,160,.09); --shl:0 8px 36px rgba(107,63,160,.13);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{font-family:'Nunito Sans',sans-serif;background:var(--bg);color:var(--ink);font-size:15px;line-height:1.65;}
+.wrap{max-width:1060px;margin:0 auto;padding:0 1.5rem 8rem;}
+.snav{position:fixed;left:0;top:50%;transform:translateY(-50%);display:flex;flex-direction:column;gap:5px;padding:10px 7px;background:var(--srf);border:1px solid var(--brd);border-radius:0 var(--r) var(--r) 0;box-shadow:var(--sh);z-index:100;}
+.snav a{width:8px;height:8px;border-radius:50%;background:var(--brd2);transition:all .2s;cursor:pointer;display:block;border:none;}
+.snav a.on,.snav a:hover{background:var(--pur);transform:scale(1.4);}
+@media(max-width:700px){.snav{display:none;}}
+.toc{background:var(--srf);border:1px solid var(--brd);border-radius:var(--r);padding:1.5rem 2rem;margin:1.5rem 0 2rem;box-shadow:var(--sh);}
+.toc-title{font-family:'Nunito',sans-serif;font-size:1rem;font-weight:800;color:var(--pur);margin-bottom:1rem;display:flex;align-items:center;gap:8px;}
+.toc-grid{display:grid;grid-template-columns:1fr 1fr;gap:6px 2rem;}
+@media(max-width:580px){.toc-grid{grid-template-columns:1fr;}}
+.toc-item{display:flex;align-items:center;gap:8px;padding:6px 0;border-bottom:1px solid var(--brd);text-decoration:none;color:var(--ink2);font-size:13.5px;transition:color .15s;}
+.toc-item:last-child{border-bottom:none;}
+.toc-item:hover{color:var(--pur);}
+.toc-num{font-family:'Nunito',sans-serif;font-weight:800;font-size:12px;color:var(--pur3);width:22px;flex-shrink:0;}
+.cover{background:linear-gradient(135deg,#3D1A78 0%,#6B3FA0 55%,#2A1050 100%);border-radius:var(--r);padding:3rem 3rem 2.5rem;margin:1.5rem 0 2.5rem;color:#fff;position:relative;overflow:hidden;}
+.cover::before{content:'';position:absolute;top:-70px;right:-70px;width:320px;height:320px;border-radius:50%;background:rgba(255,255,255,.05);}
+.cover::after{content:'';position:absolute;bottom:-60px;right:120px;width:180px;height:180px;border-radius:50%;background:rgba(245,130,31,.18);}
+.cover-top{display:flex;align-items:flex-start;justify-content:space-between;gap:1.5rem;margin-bottom:1.75rem;flex-wrap:wrap;}
+.flogo{font-family:'Nunito',sans-serif;font-size:1.4rem;font-weight:900;letter-spacing:-.02em;}
+.flogo em{color:var(--org);font-style:normal;}
+.cover-badge{background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.28);border-radius:20px;padding:4px 13px;font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;}
+.cover h1{font-family:'Nunito',sans-serif;font-size:clamp(1.7rem,4vw,2.8rem);font-weight:900;line-height:1.1;margin-bottom:.4rem;}
+.school-name{display:block;color:var(--org);}
+.cover-sub{font-size:13.5px;opacity:.8;max-width:540px;margin-bottom:2rem;}
+.cstats{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;}
+@media(max-width:580px){.cstats{grid-template-columns:1fr 1fr;}}
+.cs{background:rgba(255,255,255,.13);border-radius:var(--rs);padding:.85rem 1rem;}
+.cs-v{font-family:'Nunito',sans-serif;font-size:1.7rem;font-weight:900;line-height:1;}
+.cs-v.o{color:var(--org);}
+.cs-l{font-size:11px;opacity:.75;margin-top:3px;}
+.pbtn{position:absolute;bottom:1.2rem;right:1.5rem;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.28);color:#fff;font-size:12px;font-family:'Nunito Sans',sans-serif;padding:5px 14px;border-radius:20px;cursor:pointer;transition:all .15s;}
+.pbtn:hover{background:rgba(255,255,255,.25);}
+.sec{padding:2.5rem 0 .5rem;scroll-margin-top:20px;}
+.sec-n{font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--pur3);margin-bottom:.2rem;}
+.sec h2{font-family:'Nunito',sans-serif;font-size:1.6rem;font-weight:800;color:var(--ink);line-height:1.2;}
+.sec-d{font-size:13.5px;color:var(--ink2);margin-top:.2rem;max-width:640px;}
+hr.div{border:none;border-top:1px solid var(--brd);margin:0;}
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+.g3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;}
+.g4{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;}
+@media(max-width:700px){.g2,.g3,.g4{grid-template-columns:1fr;}}
+@media(max-width:900px){.g4{grid-template-columns:1fr 1fr;}}
+.card{background:var(--srf);border:1px solid var(--brd);border-radius:var(--r);box-shadow:var(--sh);}
+.cp{padding:1.4rem 1.5rem;}
+.card h3{font-family:'Nunito',sans-serif;font-size:.98rem;font-weight:700;margin-bottom:.2rem;}
+.csub{font-size:12px;color:var(--ink3);margin-bottom:1rem;}
+.cw{position:relative;width:100%;}
+.stat{background:var(--srf);border:1px solid var(--brd);border-radius:var(--r);padding:1.1rem 1.2rem 1rem;box-shadow:var(--sh);}
+.stat.tp{border-top:4px solid var(--pur);}
+.stat.to{border-top:4px solid var(--org);}
+.stat.tg{border-top:4px solid var(--grn2);}
+.stat.tr{border-top:4px solid var(--red);}
+.stat.ta{border-top:4px solid var(--amb2);}
+.sl{font-size:12px;color:var(--ink3);margin-bottom:4px;}
+.sv{font-family:'Nunito',sans-serif;font-size:1.9rem;font-weight:900;line-height:1;}
+.sv.p{color:var(--pur);} .sv.o{color:var(--org);} .sv.g{color:var(--grn);} .sv.r{color:var(--red);} .sv.a{color:var(--amb);}
+.ss{font-size:12px;color:var(--ink2);margin-top:4px;}
+.dt{display:inline-block;font-size:11.5px;font-weight:700;padding:2px 9px;border-radius:20px;margin-top:4px;}
+.dup{background:var(--grn-bg);color:var(--grn);}
+.dnt{background:var(--srf2);color:var(--ink2);}
+.ddn{background:var(--red-bg);color:var(--red);}
+.tl{display:grid;grid-template-columns:repeat(3,1fr);gap:0;margin:1.75rem 0;position:relative;}
+.tl::before{content:'';position:absolute;top:36px;left:15%;right:15%;height:3px;background:linear-gradient(90deg,var(--pur),var(--org),var(--grn2));border-radius:2px;z-index:0;}
+.tls{text-align:center;padding:0 5px;position:relative;z-index:1;}
+.tli{width:72px;height:72px;border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 9px;font-size:22px;border:3px solid transparent;background:var(--srf);box-shadow:var(--sh);}
+.tli.done{background:var(--pur-bg2);border-color:var(--pur);}
+.tln{font-family:'Nunito',sans-serif;font-size:12.5px;font-weight:700;color:var(--ink);}
+.tld{font-size:11px;color:var(--ink3);margin-top:1px;}
+.tlm{background:var(--pur-bg);border-radius:7px;padding:5px 7px;margin-top:7px;font-size:11px;font-weight:600;color:var(--pur);line-height:1.4;}
+.tlm.om{background:var(--org-bg);color:var(--org);}
+.tlm.gm{background:var(--grn-bg);color:var(--grn);}
+@media(max-width:620px){.tl{grid-template-columns:1fr;}.tl::before{display:none;}}
+.tabs{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:1.4rem;}
+.tab{font-family:'Nunito',sans-serif;font-size:13px;font-weight:700;padding:6px 17px;border-radius:20px;border:2px solid var(--brd2);background:var(--srf);color:var(--ink2);cursor:pointer;transition:all .15s;}
+.tab.on{background:var(--pur);color:#fff;border-color:var(--pur);}
+.tab:hover:not(.on){background:var(--pur-bg);}
+.pane{display:none;}.pane.on{display:block;}
+.tbl{width:100%;border-collapse:collapse;font-size:13px;}
+.tbl th{padding:9px 11px;text-align:left;font-size:10.5px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--ink3);background:var(--srf2);border-bottom:1px solid var(--brd);}
+.tbl td{padding:10px 11px;border-bottom:1px solid var(--brd);}
+.tbl tr:last-child td{border-bottom:none;}
+.tbl tr:hover td{background:#FAF7FE;}
+.above{color:var(--grn);font-weight:700;}
+.below{color:var(--red);font-weight:600;}
+.nat{color:var(--ink3);}
+.ins{border-radius:0 var(--rs) var(--rs) 0;padding:.85rem 1.1rem;margin:.9rem 0;font-size:13.5px;line-height:1.6;}
+.ip{background:var(--pur-bg);border-left:4px solid var(--pur);}
+.ip strong{color:var(--pur);}
+.ig{background:var(--grn-bg);border-left:4px solid var(--grn2);}
+.ig strong{color:var(--grn);}
+.io{background:var(--org-bg);border-left:4px solid var(--org);}
+.io strong{color:var(--org);}
+.ir{background:var(--red-bg);border-left:4px solid var(--red);}
+.ir strong{color:var(--red);}
+.ib{background:var(--blu-bg);border-left:4px solid var(--blu);}
+.ib strong{color:var(--blu);}
+.lo-tag{display:inline-block;font-size:11px;font-weight:700;padding:2px 10px;border-radius:20px;letter-spacing:.02em;}
+.lo-strong{background:var(--grn-bg);color:var(--grn);}
+.lo-mod{background:var(--amb-bg);color:var(--amb);}
+.lo-weak{background:var(--red-bg);color:var(--red);}
+.rc-card{background:var(--srf);border:1px solid var(--brd);border-radius:var(--r);padding:1.2rem;box-shadow:var(--sh);}
+.rc-tag{display:inline-block;font-size:10px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;padding:3px 10px;border-radius:20px;margin-bottom:.55rem;}
+.rt-w{background:var(--grn-bg);color:var(--grn);}
+.rt-a{background:var(--amb-bg);color:var(--amb);}
+.rt-n{background:var(--pur-bg);color:var(--pur);}
+.rt-r{background:var(--red-bg);color:var(--red);}
+.rc-card h4{font-family:'Nunito',sans-serif;font-size:14px;font-weight:700;margin-bottom:5px;}
+.rc-card p{font-size:13px;color:var(--ink2);line-height:1.6;}
+.rank-row{display:flex;align-items:center;gap:10px;padding:9px 0;border-bottom:1px solid var(--brd);}
+.rank-row:last-child{border-bottom:none;}
+.rank-n{font-family:'Nunito',sans-serif;font-size:13px;font-weight:900;width:26px;color:var(--pur3);flex-shrink:0;}
+.rank-school{font-size:13px;font-weight:600;width:185px;flex-shrink:0;}
+.rank-bar-wrap{flex:1;height:8px;background:#EDE8F8;border-radius:4px;overflow:hidden;}
+.rank-bar{height:100%;border-radius:4px;}
+.rank-val{font-family:'Nunito',sans-serif;font-size:12px;font-weight:800;color:var(--pur);min-width:70px;text-align:right;}
+.school-card{background:var(--srf);border:1px solid var(--brd);border-radius:var(--r);box-shadow:var(--sh);overflow:hidden;margin-bottom:1.5rem;}
+.school-card-hdr{padding:1.1rem 1.5rem;display:flex;align-items:center;gap:12px;flex-wrap:wrap;}
+.school-icon{width:42px;height:42px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0;}
+.school-card-body{padding:1.2rem 1.5rem;border-top:1px solid var(--brd);}
+@media print{body{background:#fff;}.snav,.pbtn,.tabs{display:none;}.pane{display:block!important;}.toc{break-inside:avoid;}}
+</style>
+</head>
+<body>
+
+<nav class="snav" id="sn">
+  <a href="#s0" class="on" title="Cover"></a>
+  <a href="#toc" title="TOC"></a>
+  <a href="#s1" title="Executive Summary"></a>
+  <a href="#s2" title="Program Journey"></a>
+  <a href="#s3" title="Reading Minutes"></a>
+  <a href="#s4" title="Assignments"></a>
+  <a href="#s5" title="Assessment Data"></a>
+  <a href="#s6" title="School Ranking"></a>
+  <a href="#s7" title="Individual Schools"></a>
+  <a href="#s8" title="New Schools Baseline"></a>
+  <a href="#s9" title="Impact Summary"></a>
+</nav>
+
+<div class="wrap">
+
+<!-- ═══ COVER ═══ -->
+<div class="cover" id="s0">
+  <div class="cover-top">
+    <div>
+      <div class="flogo">frea<em>dom</em></div>
+      <div style="font-size:11px;opacity:.6;margin-top:1px;">Creating A Nation Of Readers</div>
+    </div>
+    <div style="display:flex;flex-direction:column;align-items:flex-end;gap:6px;">
+      <div class="cover-badge">Baseline · Midline · Endline · 2025–26</div>
+      <div style="font-size:11px;opacity:.55;font-weight:600;letter-spacing:.04em;">CCS SCHOOLS PROGRAM</div>
+    </div>
+  </div>
+  <h1>Freadom Impact Report<span class="school-name">CCS Schools</span></h1>
+  <div class="cover-sub">A comprehensive view of reading engagement, skill development, assessment improvements, and NCF-aligned learning outcomes across 7 partner schools · Academic Year 2025–26.</div>
+  <div class="cstats">
+    <div class="cs"><div class="cs-v o">7</div><div class="cs-l">Partner schools</div></div>
+    <div class="cs"><div class="cs-v">4,237</div><div class="cs-l">Students enrolled</div></div>
+    <div class="cs"><div class="cs-v o">3</div><div class="cs-l">Assessment phases</div></div>
+    <div class="cs"><div class="cs-v">82.5L+</div><div class="cs-l">Total reading mins</div></div>
+  </div>
+  <div style="display:flex;flex-wrap:wrap;gap:1.5rem;margin-top:1.5rem;font-size:12px;opacity:.68;">
+    <span>📅 Academic Year 2025–26</span>
+    <span>📋 Baseline · Midline · Endline assessments</span>
+    <span>🏫 Freadom Edu + CCS Collaboration</span>
+    <span>📱 NCF FLN Aligned</span>
+  </div>
+
+</div>
+
+<!-- ═══ TABLE OF CONTENTS ═══ -->
+<div class="toc" id="toc">
+  <div class="toc-title">📋 Table of Contents</div>
+  <div class="toc-grid">
+    <a class="toc-item" href="#s1"><span class="toc-num">01</span>Executive Summary</a>
+    <a class="toc-item" href="#s2"><span class="toc-num">02</span>Program Journey</a>
+    <a class="toc-item" href="#s3"><span class="toc-num">03</span>Reading Minutes</a>
+    <a class="toc-item" href="#s4"><span class="toc-num">04</span>Assignment Completion</a>
+    <a class="toc-item" href="#s5"><span class="toc-num">05</span>Assessment Data — C&V and ORF</a>
+    <a class="toc-item" href="#s6"><span class="toc-num">06</span>School-wise Ranking</a>
+    <a class="toc-item" href="#s7"><span class="toc-num">07</span>Individual School Reports</a>
+    <a class="toc-item" href="#s8"><span class="toc-num">08</span>New Schools Baseline</a>
+    <a class="toc-item" href="#s9"><span class="toc-num">09</span>Impact Summary</a>
+  </div>
+</div>
+
+<!-- ═══ S1 · EXECUTIVE SUMMARY ═══ -->
+<section class="sec" id="s1">
+  <div class="sec-n">Section 1</div>
+  <h2>Executive Summary</h2>
+  <p class="sec-d">Key outcomes across all 7 CCS partner schools — total reading engagement, student counts, and programme-wide highlights for 2025–26.</p>
+
+  <div class="g3" style="margin-bottom:1.5rem;">
+    <div style="background:linear-gradient(135deg,var(--pur),#3D1A70);border-radius:var(--r);padding:1.4rem;color:#fff;box-shadow:var(--shl);">
+      <div style="font-size:11px;opacity:.8;font-weight:700;letter-spacing:.05em;margin-bottom:.4rem;">TOTAL READING MINUTES</div>
+      <div style="font-family:'Nunito',sans-serif;font-size:2.4rem;font-weight:900;line-height:1;">82.6L</div>
+      <div style="font-size:13px;opacity:.85;margin-top:.4rem;">Total minutes logged across all 7 CCS schools combined (8,263,601 mins)</div>
+    </div>
+    <div style="background:linear-gradient(135deg,var(--org),#C06010);border-radius:var(--r);padding:1.4rem;color:#fff;box-shadow:var(--shl);">
+      <div style="font-size:11px;opacity:.8;font-weight:700;letter-spacing:.05em;margin-bottom:.4rem;">STUDENTS ENROLLED</div>
+      <div style="font-family:'Nunito',sans-serif;font-size:2.4rem;font-weight:900;line-height:1;">4,237</div>
+      <div style="font-size:13px;opacity:.85;margin-top:.4rem;">Students across 7 schools: HVB (1,204) · SR Capital (1,171) · Surya (649) and more</div>
+    </div>
+    <div style="background:linear-gradient(135deg,var(--grn),#0C6038);border-radius:var(--r);padding:1.4rem;color:#fff;box-shadow:var(--shl);">
+      <div style="font-size:11px;opacity:.8;font-weight:700;letter-spacing:.05em;margin-bottom:.4rem;">TOP SCHOOL (WEIGHTED AVG)</div>
+      <div style="font-family:'Nunito',sans-serif;font-size:2.4rem;font-weight:900;line-height:1;">HVB</div>
+      <div style="font-size:13px;opacity:.85;margin-top:.4rem;">Hari Vidya Bhawan leads with a weighted average of 3,624 mins/student</div>
+    </div>
+  </div>
+
+  <div class="g4" style="margin-bottom:1rem;">
+    <div class="stat tp"><div class="sl">Rank #1 — Total Minutes</div><div class="sv p" style="font-size:1.3rem;">43.6L</div><div class="ss">Hari Vidya Bhawan</div><span class="dt dup">4,363,321 mins</span></div>
+    <div class="stat to"><div class="sl">Highest Weighted Avg</div><div class="sv o" style="font-size:1.5rem;">3,624</div><div class="ss">Mins/student · HVB</div><span class="dt dup">Rank #1</span></div>
+    <div class="stat tg"><div class="sl">C&amp;V Improvement (SR Capital)</div><div class="sv g" style="font-size:1.5rem;">11→21.4</div><div class="ss">Baseline → Endline avg</div><span class="dt dup">+95% growth</span></div>
+    <div class="stat ta"><div class="sl">ORF Leader</div><div class="sv a" style="font-size:1.3rem;">Angel Public</div><div class="ss">Endline ORF avg: 7.92</div></div>
+  </div>
+
+  <div style="background:var(--pur-bg2);border-radius:var(--r);padding:1.5rem 2rem;border-left:5px solid var(--pur);margin-top:1rem;">
+    <div style="font-family:'Nunito',sans-serif;font-size:1.1rem;font-weight:800;color:var(--pur);line-height:1.4;">"Across all 7 CCS partner schools, Freadom logged over 82 lakh reading minutes in 2025–26. Hari Vidya Bhawan dominated in total and weighted engagement. Angel Public Smart School showed the strongest ORF progression. SR Capital School achieved the highest Comprehension &amp; Vocabulary improvement — from 11.0 at baseline to 21.4 at endline."</div>
+    <div style="font-size:12px;color:var(--ink3);margin-top:.7rem;">Based on actual Freadom assessment and engagement data · CCS Schools · Academic Year 2025–26</div>
+  </div>
+</section>
+
+<hr class="div"/>
+
+<!-- ═══ S2 · PROGRAM JOURNEY ═══ -->
+<section class="sec" id="s2">
+  <div class="sec-n">Section 2</div>
+  <h2>The Program Journey</h2>
+  <p class="sec-d">How the Freadom Reading Program unfolded across the academic year — from school onboarding through three assessment phases.</p>
+
+  <div class="tl">
+    <div class="tls">
+      <div class="tli done">🏫</div>
+      <div class="tln">Onboarding & Baseline</div>
+      <div class="tld">Phase 1</div>
+      <div class="tlm">7 schools onboarded<br/>Baseline: HVB (1077) · SR Capital (812) · Surya (526) · Sai Nath (231) · KPS (246) · Oxford (349) · Angel (81)</div>
+    </div>
+    <div class="tls">
+      <div class="tli done">📱</div>
+      <div class="tln">Active Reading + Midline</div>
+      <div class="tld">Phase 2</div>
+      <div class="tlm om">App usage underway<br/>Midline: HVB (1135) · SR Capital (1126) · Surya (617) · Sai Nath (268) · KPS (276) · Oxford (459) · Angel (122)</div>
+    </div>
+    <div class="tls">
+      <div class="tli done">🎓</div>
+      <div class="tln">Endline Assessment</div>
+      <div class="tld">Phase 3</div>
+      <div class="tlm gm">Endline: HVB (1108) · SR Capital (1025) · Surya (536) · Sai Nath (266) · Angel (120)<br/>KPS & Oxford: Midline only</div>
+    </div>
+  </div>
+
+  <div class="card cp" style="margin-top:1rem;">
+    <h3>Assessment Phase — Students Assessed per School</h3>
+    <div class="csub">Number of students assessed at each phase (Baseline · Midline · Endline)</div>
+    <div style="overflow-x:auto;margin-top:.5rem;">
+      <table class="tbl">
+        <thead><tr><th>School</th><th>Baseline</th><th>Midline</th><th>Endline</th><th>Total Enrolled</th><th>Notes</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Hari Vidya Bhawan</strong></td><td>1,077</td><td>1,135</td><td class="above">1,108</td><td>1,204</td><td><span class="lo-tag lo-strong">All 3 phases</span></td></tr>
+          <tr><td><strong>SR Capital Sr. Sec. School</strong></td><td>812</td><td>1,126</td><td class="above">1,025</td><td>1,171</td><td><span class="lo-tag lo-strong">All 3 phases</span></td></tr>
+          <tr><td><strong>Surya Model School</strong></td><td>526</td><td>617</td><td class="above">536</td><td>649</td><td><span class="lo-tag lo-strong">All 3 phases</span></td></tr>
+          <tr><td><strong>Sai Nath Public School</strong></td><td>231</td><td>268</td><td class="above">266</td><td>290</td><td><span class="lo-tag lo-strong">All 3 phases</span></td></tr>
+          <tr><td><strong>Angel Public Smart School</strong></td><td>81</td><td>122</td><td class="above">120</td><td>128</td><td><span class="lo-tag lo-strong">All 3 phases</span></td></tr>
+          <tr><td><strong>KPS Convent</strong></td><td>246</td><td>276</td><td class="nat">—</td><td>306</td><td><span class="lo-tag lo-mod">BL + ML only</span></td></tr>
+          <tr><td><strong>Oxford Angel School</strong></td><td>349</td><td>459</td><td class="nat">—</td><td>489</td><td><span class="lo-tag lo-mod">BL + ML only</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<hr class="div"/>
+
+<!-- ═══ S3 · READING MINUTES ═══ -->
+<section class="sec" id="s3">
+  <div class="sec-n">Section 3</div>
+  <h2>Reading Minutes</h2>
+  <p class="sec-d">Total and weighted average reading minutes per school — the core measure of student engagement with the Freadom app.</p>
+
+  <div class="g4" style="margin-bottom:1.5rem;">
+    <div class="stat tp"><div class="sl">Total mins — all schools</div><div class="sv p" style="font-size:1.35rem;">82,63,601</div><div class="ss">Combined across 7 schools</div></div>
+    <div class="stat to"><div class="sl">Highest total — HVB</div><div class="sv o" style="font-size:1.35rem;">43,63,321</div><div class="ss">52.8% of all CCS mins</div></div>
+    <div class="stat tg"><div class="sl">Highest weighted avg</div><div class="sv g" style="font-size:1.5rem;">3,624</div><div class="ss">HVB · mins per student</div></div>
+    <div class="stat ta"><div class="sl">Lowest total</div><div class="sv a" style="font-size:1.5rem;">1,32,627</div><div class="ss">KPS Convent</div></div>
+  </div>
+
+  <div class="g2">
+    <div class="card cp">
+      <h3>Total Reading Minutes by School</h3>
+      <div class="csub">Absolute reading minutes logged · All schools</div>
+      <div class="cw" style="height:290px;"><canvas id="totalMinsChart"></canvas></div>
+    </div>
+    <div class="card cp">
+      <h3>Weighted Average Reading Minutes</h3>
+      <div class="csub">Reading minutes ÷ enrolled students · Normalised engagement</div>
+      <div class="cw" style="height:290px;"><canvas id="weightedAvgChart"></canvas></div>
+    </div>
+  </div>
+
+  <div class="ins io" style="margin-top:.75rem;">
+    <strong>Engagement insight:</strong> While Hari Vidya Bhawan leads in raw total minutes (43.6L), it also leads in weighted average (3,624 mins/student) — reflecting genuinely high per-student engagement across its large cohort of 1,204 students. Angel Public Smart School follows closely with a weighted average of 3,042 mins/student despite having just 128 students enrolled.
+  </div>
+
+  <!-- School-wise Reading Minutes Table -->
+  <div class="card" style="overflow:hidden;margin-top:1.25rem;">
+    <div style="background:linear-gradient(135deg,var(--pur),#3D1A70);padding:1rem 1.5rem;color:#fff;">
+      <div style="font-size:11px;opacity:.78;font-weight:700;letter-spacing:.07em;">READING MINUTES — DETAILED BREAKDOWN</div>
+      <div style="font-family:'Nunito',sans-serif;font-size:.95rem;font-weight:800;margin-top:2px;">School-level data</div>
+    </div>
+    <div style="overflow-x:auto;">
+      <table class="tbl">
+        <thead><tr><th>School</th><th>Students Enrolled</th><th>Total Reading Minutes</th><th>Weighted Avg (mins/student)</th><th>Rank</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Hari Vidya Bhawan</strong></td><td>1,204</td><td class="above">4,363,321</td><td class="above">3,624</td><td>🥇 #1</td></tr>
+          <tr><td><strong>Angel Public Smart School</strong></td><td>128</td><td>389,360</td><td class="above">3,042</td><td>🥈 #2 (weighted)</td></tr>
+          <tr><td><strong>Surya Model School</strong></td><td>649</td><td class="above">988,584</td><td>1,523</td><td>#2 (total)</td></tr>
+          <tr><td><strong>SR Capital Sr. Sec. School</strong></td><td>1,171</td><td>759,295</td><td>648</td><td>#3 (total)</td></tr>
+          <tr><td><strong>Oxford Angel School</strong></td><td>489</td><td>427,435</td><td>874</td><td>#4 (total)</td></tr>
+          <tr><td><strong>Sai Nath Public School</strong></td><td>290</td><td>203,379</td><td>701</td><td>#6 (total)</td></tr>
+          <tr><td><strong>KPS Convent</strong></td><td>306</td><td class="below">132,627</td><td class="below">433</td><td>#7</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<hr class="div"/>
+
+<!-- ═══ S4 · ASSIGNMENTS ═══ -->
+<section class="sec" id="s4">
+  <div class="sec-n">Section 4</div>
+  <h2>Assignment Completion</h2>
+  <p class="sec-d">Assignment completion rates across CCS schools — note that data availability varies by school and grade.</p>
+
+  <div class="ins ir" style="margin-bottom:1.2rem;">
+    <strong>Data note:</strong> Assignment completion data is available for Hari Vidya Bhawan, Surya Model School, SR Capital School, and Oxford Angel School. Angel Public Smart School, Sai Nath Public School (1 assignment only), and KPS Convent have limited or no completion data.
+  </div>
+
+  <div class="g2" style="margin-bottom:1.25rem;">
+    <div class="card cp">
+      <h3>Assignment Completion % — School-wise</h3>
+      <div class="csub">Based on available data · Schools with sufficient data shown</div>
+      <div class="cw" style="height:240px;"><canvas id="completionChart"></canvas></div>
+    </div>
+    <div class="card cp">
+      <h3>Hari Vidya Bhawan — Grade-wise Completion</h3>
+      <div class="csub">Total assignments vs completed · All grades · HVB</div>
+      <div class="cw" style="height:240px;"><canvas id="hvbCompletionChart"></canvas></div>
+    </div>
+  </div>
+
+  <div class="card" style="overflow:hidden;">
+    <div style="background:linear-gradient(135deg,var(--org),#C06010);padding:1rem 1.5rem;color:#fff;">
+      <div style="font-size:11px;opacity:.78;font-weight:700;letter-spacing:.07em;">ASSIGNMENT COMPLETION — DETAILED DATA</div>
+      <div style="font-family:'Nunito',sans-serif;font-size:.95rem;font-weight:800;margin-top:2px;">Grade-wise totals for schools with available data</div>
+    </div>
+    <div style="overflow-x:auto;">
+      <table class="tbl">
+        <thead><tr><th>School</th><th>Grade</th><th>Total Assignments</th><th>Completed</th><th>Completion %</th></tr></thead>
+        <tbody>
+          <tr><td rowspan="8" style="font-weight:700;vertical-align:top;padding-top:12px;">Hari Vidya Bhawan</td><td>Grade 1</td><td>594</td><td>362</td><td>60.9%</td></tr>
+          <tr><td>Grade 2</td><td>1,645</td><td>1,475</td><td class="above">89.7%</td></tr>
+          <tr><td>Grade 3</td><td>1,050</td><td>892</td><td class="above">84.9%</td></tr>
+          <tr><td>Grade 4</td><td>169</td><td>168</td><td class="above">99.4%</td></tr>
+          <tr><td>Grade 5</td><td>127</td><td>100</td><td class="above">78.7%</td></tr>
+          <tr><td>Grade 6</td><td>282</td><td>202</td><td>71.6%</td></tr>
+          <tr><td>Grade 7</td><td>588</td><td>547</td><td class="above">93.0%</td></tr>
+          <tr><td>Grade 8</td><td>1,527</td><td>1,272</td><td class="above">83.3%</td></tr>
+          <tr><td colspan="2" style="font-weight:700;background:var(--grn-bg);color:var(--grn);">HVB Overall</td><td style="background:var(--grn-bg);">5,982</td><td style="background:var(--grn-bg);">5,018</td><td style="background:var(--grn-bg);font-weight:700;color:var(--grn);">83.9%</td></tr>
+          <tr><td rowspan="5" style="font-weight:700;vertical-align:top;padding-top:12px;">Surya Model School</td><td>Grade 1</td><td>146</td><td>104</td><td>71.2%</td></tr>
+          <tr><td>Grade 3</td><td>137</td><td>54</td><td class="below">39.4%</td></tr>
+          <tr><td>Grade 4</td><td>93</td><td>81</td><td class="above">87.1%</td></tr>
+          <tr><td>Grade 5</td><td>52</td><td>52</td><td class="above">100%</td></tr>
+          <tr><td>Grade 8</td><td>6</td><td>1</td><td class="below">16.7%</td></tr>
+          <tr><td colspan="2" style="font-weight:700;background:var(--amb-bg);color:var(--amb);">Surya Overall</td><td style="background:var(--amb-bg);">434</td><td style="background:var(--amb-bg);">292</td><td style="background:var(--amb-bg);font-weight:700;color:var(--amb);">67.3%</td></tr>
+          <tr><td rowspan="5" style="font-weight:700;vertical-align:top;padding-top:12px;">SR Capital School</td><td>Grade 3</td><td>21</td><td>4</td><td class="below">19.1%</td></tr>
+          <tr><td>Grade 4</td><td>20</td><td>4</td><td class="below">20.0%</td></tr>
+          <tr><td>Grade 5</td><td>23</td><td>6</td><td class="below">26.1%</td></tr>
+          <tr><td>Grade 6</td><td>15</td><td>1</td><td class="below">6.7%</td></tr>
+          <tr><td>Grade 8</td><td>19</td><td>7</td><td class="below">36.8%</td></tr>
+          <tr><td colspan="2" style="font-weight:700;background:var(--red-bg);color:var(--red);">SR Capital Overall</td><td style="background:var(--red-bg);">98</td><td style="background:var(--red-bg);">22</td><td style="background:var(--red-bg);font-weight:700;color:var(--red);">22.4%</td></tr>
+          <tr><td colspan="2" style="font-weight:700;">Oxford Angel School</td><td>15</td><td>8</td><td>53.3%</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<hr class="div"/>
+
+<!-- ═══ S5 · ASSESSMENT DATA ═══ -->
+<section class="sec" id="s5">
+  <div class="sec-n">Section 5</div>
+  <h2>Assessment Data — Comprehension &amp; Vocabulary and Oral Reading Fluency</h2>
+  <p class="sec-d">Baseline → Midline → Endline comparison for both assessment dimensions across all CCS schools.</p>
+
+  <div class="ins ip" style="margin-bottom:1.2rem;">
+    <strong>Assessment dimensions:</strong> Two metrics are tracked — <strong>Comprehension &amp; Vocabulary (C&amp;V)</strong> scored out of 30, and <strong>Oral Reading Fluency (ORF)</strong> scored out of 10. Values shown are <strong>median scores per grade</strong> averaged across all grades in a school. KPS Convent and Oxford Angel School have Baseline and Midline only (no Endline conducted).
+  </div>
+
+  <div class="tabs" id="assessTabs">
+    <button class="tab on" onclick="swAssess('aCV',this)">Comprehension &amp; Vocabulary</button>
+    <button class="tab" onclick="swAssess('aORF',this)">Oral Reading Fluency</button>
+    <button class="tab" onclick="swAssess('aTime',this)">Median Time Taken</button>
+  </div>
+
+  <!-- C&V Pane -->
+  <div class="pane on" id="aCV">
+    <div class="g2" style="margin-bottom:1.25rem;">
+      <div class="card cp">
+        <h3>C&amp;V — Schools with all 3 phases</h3>
+        <div class="csub">Average C&amp;V score (median across grades) · Baseline · Midline · Endline</div>
+        <div class="cw" style="height:270px;"><canvas id="cvAllChart"></canvas></div>
+      </div>
+      <div class="card cp">
+        <h3>C&amp;V — KPS &amp; Oxford (BL + ML only)</h3>
+        <div class="csub">Average C&amp;V score · Baseline vs Midline only</div>
+        <div class="cw" style="height:270px;"><canvas id="cvPartialChart"></canvas></div>
+      </div>
+    </div>
+    <div class="card" style="overflow:hidden;">
+      <div style="background:linear-gradient(135deg,var(--pur),#3D1A70);padding:1rem 1.5rem;color:#fff;">
+        <div style="font-size:11px;opacity:.78;font-weight:700;letter-spacing:.07em;">C&amp;V SCORES — SCHOOL-WISE SUMMARY</div>
+      </div>
+      <div style="overflow-x:auto;">
+        <table class="tbl">
+          <thead><tr><th>School</th><th>Baseline Avg</th><th>Midline Avg</th><th>Endline Avg</th><th>BL→EL Change</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Angel Public Smart School</strong></td><td class="nat">21.2</td><td>21.6</td><td class="above">24.3</td><td class="above">+3.1</td></tr>
+            <tr><td><strong>Hari Vidya Bhawan</strong></td><td class="nat">12.6</td><td>14.9</td><td class="above">16.8</td><td class="above">+4.2</td></tr>
+            <tr><td><strong>Sai Nath Public School</strong></td><td class="nat">13.1</td><td>14.8</td><td class="above">16.4</td><td class="above">+3.3</td></tr>
+            <tr><td><strong>SR Capital Sr. Sec. School</strong></td><td class="nat">11.0</td><td>16.4</td><td class="above">21.4</td><td class="above">+10.4</td></tr>
+            <tr><td><strong>Surya Model School</strong></td><td class="nat">12.4</td><td>12.8</td><td class="above">15.8</td><td class="above">+3.4</td></tr>
+            <tr><td><strong>KPS Convent</strong></td><td class="nat">9.1</td><td>9.5</td><td class="nat">—</td><td class="nat">+0.4 (ML)</td></tr>
+            <tr><td><strong>Oxford Angel School</strong></td><td class="nat">11.2</td><td>13.1</td><td class="nat">—</td><td class="nat">+1.9 (ML)</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="ins ig" style="margin-top:.75rem;">
+      <strong>C&amp;V Insight:</strong> SR Capital School showed the most dramatic improvement — Comprehension &amp; Vocabulary grew from an average of 11.0 at baseline to 21.4 at endline (+10.4 points). Angel Public Smart School had the highest absolute endline score (24.3 avg). KPS Convent showed modest midline improvement (+0.4) suggesting a need for targeted comprehension support.
+    </div>
+  </div>
+
+  <!-- ORF Pane -->
+  <div class="pane" id="aORF">
+    <div class="g2" style="margin-bottom:1.25rem;">
+      <div class="card cp">
+        <h3>ORF — Schools with all 3 phases</h3>
+        <div class="csub">Average ORF score (median across grades, out of 10) · Baseline · Midline · Endline</div>
+        <div class="cw" style="height:270px;"><canvas id="orfAllChart"></canvas></div>
+      </div>
+      <div class="card cp">
+        <h3>ORF — KPS &amp; Oxford (BL + ML only)</h3>
+        <div class="csub">Average ORF score · Baseline vs Midline only</div>
+        <div class="cw" style="height:270px;"><canvas id="orfPartialChart"></canvas></div>
+      </div>
+    </div>
+    <div class="card" style="overflow:hidden;">
+      <div style="background:linear-gradient(135deg,var(--grn),#0C6038);padding:1rem 1.5rem;color:#fff;">
+        <div style="font-size:11px;opacity:.78;font-weight:700;letter-spacing:.07em;">ORF SCORES — SCHOOL-WISE SUMMARY</div>
+      </div>
+      <div style="overflow-x:auto;">
+        <table class="tbl">
+          <thead><tr><th>School</th><th>Baseline Avg</th><th>Midline Avg</th><th>Endline Avg</th><th>BL→EL Change</th><th>Note</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Angel Public Smart School</strong></td><td class="nat">6.74</td><td>7.62</td><td class="above">7.92</td><td class="above">+1.18</td><td><span class="lo-tag lo-strong">Consistent growth</span></td></tr>
+            <tr><td><strong>Hari Vidya Bhawan</strong></td><td class="nat">5.86</td><td>4.56</td><td class="below">3.81</td><td class="below">−2.05</td><td><span class="lo-tag lo-weak">Decline — upper grades</span></td></tr>
+            <tr><td><strong>Sai Nath Public School</strong></td><td class="nat">6.42</td><td>6.54</td><td>5.99</td><td class="below">−0.43</td><td><span class="lo-tag lo-mod">Slight dip</span></td></tr>
+            <tr><td><strong>SR Capital Sr. Sec. School</strong></td><td class="nat">5.47</td><td>4.70</td><td class="below">3.80</td><td class="below">−1.67</td><td><span class="lo-tag lo-weak">Decline — upper grades</span></td></tr>
+            <tr><td><strong>Surya Model School</strong></td><td class="nat">5.88</td><td>5.69</td><td class="above">12.25*</td><td class="above">+6.37*</td><td><span class="lo-tag lo-mod">*Gr 6–8 high values</span></td></tr>
+            <tr><td><strong>KPS Convent</strong></td><td class="nat">7.02</td><td class="below">3.20</td><td class="nat">—</td><td class="nat">−3.82 (ML)</td><td><span class="lo-tag lo-weak">Midline drop</span></td></tr>
+            <tr><td><strong>Oxford Angel School</strong></td><td class="nat">4.45</td><td>3.69</td><td class="nat">—</td><td class="nat">−0.76 (ML)</td><td><span class="lo-tag lo-mod">Slight dip</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="ins ir" style="margin-top:.75rem;">
+      <strong>ORF Note:</strong> Several schools show declining ORF averages across the three phases, particularly at upper grades (6–8). This is a school-wide average across all grades — higher grades typically score lower on ORF, and as more upper-grade students are assessed, the average can decrease. Angel Public Smart School (Grades 1–5 only) shows consistent improvement: 6.74 → 7.62 → 7.92. *Surya Model's high endline average is driven by very high values in Grades 6–8 (21.1, 20.0, 30.9) which may warrant review.
+    </div>
+  </div>
+
+  <!-- Time Taken Pane -->
+  <div class="pane" id="aTime">
+    <div class="g2" style="margin-bottom:1.25rem;">
+      <div class="card cp">
+        <h3>Median Time Taken — Schools with all 3 phases</h3>
+        <div class="csub">Average median time taken (minutes) across grades · Lower = faster assessment</div>
+        <div class="cw" style="height:270px;"><canvas id="timeAllChart"></canvas></div>
+      </div>
+      <div class="card cp">
+        <h3>Median Time Taken — KPS &amp; Oxford</h3>
+        <div class="csub">Baseline vs Midline only</div>
+        <div class="cw" style="height:270px;"><canvas id="timePartialChart"></canvas></div>
+      </div>
+    </div>
+    <div class="ins ip" style="margin-top:.5rem;">
+      <strong>Time taken insight:</strong> Across most schools, median time taken per assessment decreased from Baseline to Endline — indicating students are becoming faster and more fluent readers. Faster assessment time (with maintained or improved accuracy) is a positive indicator of reading fluency development, aligned with NCF CG-10.4 goals.
+    </div>
+  </div>
+</section>
+
+<hr class="div"/>
+
+<!-- ═══ S6 · SCHOOL RANKING ═══ -->
+<section class="sec" id="s6">
+  <div class="sec-n">Section 6</div>
+  <h2>School-wise Ranking</h2>
+  <p class="sec-d">Official ranking of CCS partner schools based on overall reading minutes as per source data.</p>
+
+  <div class="g2">
+    <div class="card cp">
+      <h3>Official Ranking by Overall Reading Minutes</h3>
+      <div class="csub">As per CCS_Schools_Ranking source data</div>
+      <div style="margin-top:1rem;">
+        <div class="rank-row"><div class="rank-n">🥇</div><div class="rank-school">Hari Vidya Bhawan</div><div class="rank-bar-wrap"><div class="rank-bar" style="width:100%;background:var(--amb2);"></div></div><div class="rank-val">4,363,321</div></div>
+        <div class="rank-row"><div class="rank-n">🥈</div><div class="rank-school">Surya Model School</div><div class="rank-bar-wrap"><div class="rank-bar" style="width:22.7%;background:var(--pur);"></div></div><div class="rank-val">988,584</div></div>
+        <div class="rank-row"><div class="rank-n">🥉</div><div class="rank-school">SR Capital Sr. Sec.</div><div class="rank-bar-wrap"><div class="rank-bar" style="width:17.4%;background:var(--pur2);"></div></div><div class="rank-val">759,295</div></div>
+        <div class="rank-row"><div class="rank-n" style="color:var(--ink3);">4</div><div class="rank-school">Oxford Angel School</div><div class="rank-bar-wrap"><div class="rank-bar" style="width:9.8%;background:var(--org);"></div></div><div class="rank-val">427,435</div></div>
+        <div class="rank-row"><div class="rank-n" style="color:var(--ink3);">5</div><div class="rank-school">Angel Public Smart</div><div class="rank-bar-wrap"><div class="rank-bar" style="width:8.9%;background:var(--grn);"></div></div><div class="rank-val">389,360</div></div>
+        <div class="rank-row"><div class="rank-n" style="color:var(--ink3);">6</div><div class="rank-school">Sai Nath Public School</div><div class="rank-bar-wrap"><div class="rank-bar" style="width:4.7%;background:var(--blu);"></div></div><div class="rank-val">203,379</div></div>
+        <div class="rank-row"><div class="rank-n" style="color:var(--ink3);">7</div><div class="rank-school">KPS Convent</div><div class="rank-bar-wrap"><div class="rank-bar" style="width:3.0%;background:var(--red);"></div></div><div class="rank-val">132,627</div></div>
+      </div>
+    </div>
+    <div class="card cp">
+      <h3>Weighted Average Ranking</h3>
+      <div class="csub">Reading minutes per enrolled student — true engagement intensity</div>
+      <div style="margin-top:1rem;">
+        <div class="rank-row"><div class="rank-n">🥇</div><div class="rank-school">Hari Vidya Bhawan</div><div class="rank-bar-wrap"><div class="rank-bar" style="width:100%;background:var(--amb2);"></div></div><div class="rank-val">3,624</div></div>
+        <div class="rank-row"><div class="rank-n">🥈</div><div class="rank-school">Angel Public Smart</div><div class="rank-bar-wrap"><div class="rank-bar" style="width:83.9%;background:var(--pur);"></div></div><div class="rank-val">3,042</div></div>
+        <div class="rank-row"><div class="rank-n">🥉</div><div class="rank-school">Surya Model School</div><div class="rank-bar-wrap"><div class="rank-bar" style="width:42.0%;background:var(--grn);"></div></div><div class="rank-val">1,523</div></div>
+        <div class="rank-row"><div class="rank-n" style="color:var(--ink3);">4</div><div class="rank-school">Oxford Angel School</div><div class="rank-bar-wrap"><div class="rank-bar" style="width:24.1%;background:var(--org);"></div></div><div class="rank-val">874</div></div>
+        <div class="rank-row"><div class="rank-n" style="color:var(--ink3);">5</div><div class="rank-school">Sai Nath Public School</div><div class="rank-bar-wrap"><div class="rank-bar" style="width:19.4%;background:var(--pur2);"></div></div><div class="rank-val">701</div></div>
+        <div class="rank-row"><div class="rank-n" style="color:var(--ink3);">6</div><div class="rank-school">SR Capital Sr. Sec.</div><div class="rank-bar-wrap"><div class="rank-bar" style="width:17.9%;background:var(--blu);"></div></div><div class="rank-val">648</div></div>
+        <div class="rank-row"><div class="rank-n" style="color:var(--ink3);">7</div><div class="rank-school">KPS Convent</div><div class="rank-bar-wrap"><div class="rank-bar" style="width:12.0%;background:var(--red);"></div></div><div class="rank-val">433</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="ins ip" style="margin-top:1rem;">
+    <strong>Ranking insight:</strong> Hari Vidya Bhawan leads both absolute and weighted rankings — a testament to its scale and per-student engagement. Angel Public Smart School jumps to #2 on the weighted ranking despite ranking #5 in total minutes, showing strong engagement intensity per student. SR Capital drops from #3 (total) to #6 (weighted) with 648 mins/student — indicating room for deeper per-student engagement.
+  </div>
+</section>
+
+<hr class="div"/>
+
+<!-- ═══ S7 · INDIVIDUAL SCHOOLS ═══ -->
+<section class="sec" id="s7">
+  <div class="sec-n">Section 7</div>
+  <h2>Individual School Reports</h2>
+  <p class="sec-d">Grade-wise assessment data, reading engagement, and key highlights per school. All data from actual source files.</p>
+
+  <div class="tabs" id="schoolTabs">
+    <button class="tab on" onclick="swSchool('sc1',this)">Angel Public</button>
+    <button class="tab" onclick="swSchool('sc2',this)">Hari Vidya</button>
+    <button class="tab" onclick="swSchool('sc3',this)">Sai Nath</button>
+    <button class="tab" onclick="swSchool('sc4',this)">SR Capital</button>
+    <button class="tab" onclick="swSchool('sc5',this)">Surya Model</button>
+    <button class="tab" onclick="swSchool('sc6',this)">KPS Convent</button>
+    <button class="tab" onclick="swSchool('sc7',this)">Oxford Angel</button>
+  </div>
+
+  <!-- ANGEL PUBLIC SMART SCHOOL -->
+  <div class="pane on" id="sc1">
+    <div class="school-card">
+      <div class="school-card-hdr" style="background:linear-gradient(135deg,var(--pur-bg2),var(--pur-bg));">
+        <div class="school-icon" style="background:var(--pur);color:#fff;">🏫</div>
+        <div>
+          <div style="font-family:'Nunito',sans-serif;font-weight:900;font-size:1.1rem;color:var(--pur);">Angel Public Smart School</div>
+          <div style="font-size:12px;color:var(--ink3);">Students: 128 · Phases: Baseline (81) · Midline (122) · Endline (120) · Grades 1–5</div>
+        </div>
+        <div style="margin-left:auto;display:flex;gap:8px;flex-wrap:wrap;">
+          <span class="lo-tag lo-strong">ORF Rank #1 (Endline: 7.92)</span>
+          <span class="lo-tag lo-strong">All 3 phases</span>
+        </div>
+      </div>
+      <div class="school-card-body">
+        <div class="g4" style="margin-bottom:1.2rem;">
+          <div class="stat tp"><div class="sl">Reading Minutes</div><div class="sv p" style="font-size:1.4rem;">3,89,360</div><div class="ss">Weighted avg: 3,042/student</div></div>
+          <div class="stat tg"><div class="sl">C&amp;V Avg (Endline)</div><div class="sv g" style="font-size:1.7rem;">24.3</div><div class="ss">Up from 21.2 at baseline</div><span class="dt dup">+3.1</span></div>
+          <div class="stat to"><div class="sl">ORF Avg (Endline)</div><div class="sv o" style="font-size:1.7rem;">7.92</div><div class="ss">Up from 6.74 at baseline</div><span class="dt dup">+1.18</span></div>
+          <div class="stat ta"><div class="sl">Endline Students</div><div class="sv a" style="font-size:1.7rem;">120</div><div class="ss">of 128 enrolled</div></div>
+        </div>
+        <div class="g2">
+          <div class="card cp">
+            <h3>C&amp;V by Grade — All 3 Phases</h3>
+            <div class="csub">Comprehension &amp; Vocabulary median · Grade 1 has no BL data</div>
+            <div class="cw" style="height:220px;"><canvas id="ap_cv"></canvas></div>
+          </div>
+          <div class="card cp">
+            <h3>ORF by Grade — All 3 Phases</h3>
+            <div class="csub">Oral Reading Fluency median · Grade 1 has no BL data</div>
+            <div class="cw" style="height:220px;"><canvas id="ap_orf"></canvas></div>
+          </div>
+        </div>
+        <div class="ins ig" style="margin-top:.75rem;"><strong>Highlight:</strong> Angel Public is the strongest performer for ORF — all grades improved from baseline to endline, reaching 7.92 average. C&amp;V also grew steadily. Grade 4 showed notable C&amp;V jump: 24 (BL) → 28 (EL). Grade 1 endline C&amp;V of 28 is the highest single-grade score in this school.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- HARI VIDYA BHAWAN -->
+  <div class="pane" id="sc2">
+    <div class="school-card">
+      <div class="school-card-hdr" style="background:linear-gradient(135deg,var(--amb-bg),#FFFBF0);">
+        <div class="school-icon" style="background:var(--amb);color:#fff;">🏫</div>
+        <div>
+          <div style="font-family:'Nunito',sans-serif;font-weight:900;font-size:1.1rem;color:var(--amb);">Hari Vidya Bhawan</div>
+          <div style="font-size:12px;color:var(--ink3);">Students: 1,204 · Phases: Baseline (1077) · Midline (1135) · Endline (1108) · Grades 1–8</div>
+        </div>
+        <div style="margin-left:auto;display:flex;gap:8px;flex-wrap:wrap;">
+          <span class="lo-tag lo-strong">Rank #1 — Total Mins (43.6L)</span>
+          <span class="lo-tag lo-strong">83.9% completion</span>
+        </div>
+      </div>
+      <div class="school-card-body">
+        <div class="g4" style="margin-bottom:1.2rem;">
+          <div class="stat ta"><div class="sl">Total Reading Minutes</div><div class="sv a" style="font-size:1.3rem;">43,63,321</div><div class="ss">Rank #1 across CCS</div></div>
+          <div class="stat tg"><div class="sl">C&amp;V Avg (Endline)</div><div class="sv g" style="font-size:1.7rem;">16.8</div><div class="ss">Up from 12.6 at baseline</div><span class="dt dup">+4.2</span></div>
+          <div class="stat tr"><div class="sl">ORF Avg (Endline)</div><div class="sv r" style="font-size:1.7rem;">3.81</div><div class="ss">Down from 5.86 at baseline</div><span class="dt ddn">−2.05</span></div>
+          <div class="stat tp"><div class="sl">Assignment Completion</div><div class="sv p" style="font-size:1.7rem;">83.9%</div><div class="ss">5,018 of 5,982</div></div>
+        </div>
+        <div class="g2">
+          <div class="card cp">
+            <h3>C&amp;V by Grade — All 3 Phases</h3>
+            <div class="csub">Comprehension &amp; Vocabulary median · Grades 1–8</div>
+            <div class="cw" style="height:220px;"><canvas id="hv_cv"></canvas></div>
+          </div>
+          <div class="card cp">
+            <h3>ORF by Grade — All 3 Phases</h3>
+            <div class="csub">Oral Reading Fluency median · Note: Upper grades declining</div>
+            <div class="cw" style="height:220px;"><canvas id="hv_orf"></canvas></div>
+          </div>
+        </div>
+        <div class="ins io" style="margin-top:.75rem;"><strong>Highlight:</strong> HVB is the engagement leader with 43.6L minutes and 83.9% assignment completion. C&amp;V improved across most grades. The ORF decline in the school average is driven by upper grades (Gr 4–8) where ORF drops from already moderate baselines — a pattern that warrants targeted fluency interventions for middle school grades.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SAI NATH PUBLIC SCHOOL -->
+  <div class="pane" id="sc3">
+    <div class="school-card">
+      <div class="school-card-hdr" style="background:linear-gradient(135deg,var(--grn-bg),#F0FBF5);">
+        <div class="school-icon" style="background:var(--grn);color:#fff;">🏫</div>
+        <div>
+          <div style="font-family:'Nunito',sans-serif;font-weight:900;font-size:1.1rem;color:var(--grn);">Sai Nath Public School</div>
+          <div style="font-size:12px;color:var(--ink3);">Students: 290 · Phases: Baseline (231) · Midline (268) · Endline (266) · Grades 2–8</div>
+        </div>
+        <div style="margin-left:auto;display:flex;gap:8px;flex-wrap:wrap;">
+          <span class="lo-tag lo-mod">Total mins: 2,03,379</span>
+          <span class="lo-tag lo-strong">All 3 phases</span>
+        </div>
+      </div>
+      <div class="school-card-body">
+        <div class="g4" style="margin-bottom:1.2rem;">
+          <div class="stat tg"><div class="sl">Total Reading Minutes</div><div class="sv g" style="font-size:1.5rem;">2,03,379</div><div class="ss">Rank #6 — total mins</div></div>
+          <div class="stat tg"><div class="sl">C&amp;V Avg (Endline)</div><div class="sv g" style="font-size:1.7rem;">16.4</div><div class="ss">Up from 13.1 at baseline</div><span class="dt dup">+3.3</span></div>
+          <div class="stat to"><div class="sl">ORF Avg (Endline)</div><div class="sv o" style="font-size:1.7rem;">5.99</div><div class="ss">Down from 6.42 at baseline</div><span class="dt ddn">−0.43</span></div>
+          <div class="stat tp"><div class="sl">Weighted Avg</div><div class="sv p" style="font-size:1.7rem;">701</div><div class="ss">Mins per student</div></div>
+        </div>
+        <div class="g2">
+          <div class="card cp">
+            <h3>C&amp;V by Grade — All 3 Phases</h3>
+            <div class="csub">Comprehension &amp; Vocabulary median · Grades 2–8 (no Gr 1 baseline)</div>
+            <div class="cw" style="height:220px;"><canvas id="sn_cv"></canvas></div>
+          </div>
+          <div class="card cp">
+            <h3>ORF by Grade — All 3 Phases</h3>
+            <div class="csub">Oral Reading Fluency · Grades 2–8</div>
+            <div class="cw" style="height:220px;"><canvas id="sn_orf"></canvas></div>
+          </div>
+        </div>
+        <div class="ins ip" style="margin-top:.75rem;"><strong>Highlight:</strong> C&amp;V improved across most grades — particularly Grade 2 (14→24) and Grade 8 (16.5→26). Grade 1 midline C&amp;V was 17 but endline dropped to 8.5 — worth investigating. ORF slight overall dip (-0.43 avg) is mainly from Grades 5–7 but Grade 1 midline ORF reached 7.55.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SR CAPITAL SCHOOL -->
+  <div class="pane" id="sc4">
+    <div class="school-card">
+      <div class="school-card-hdr" style="background:linear-gradient(135deg,var(--pur-bg2),var(--pur-bg));">
+        <div class="school-icon" style="background:var(--pur);color:#fff;">🏫</div>
+        <div>
+          <div style="font-family:'Nunito',sans-serif;font-weight:900;font-size:1.1rem;color:var(--pur);">SR Capital Sr. Sec. School</div>
+          <div style="font-size:12px;color:var(--ink3);">Students: 1,171 · Phases: Baseline (812) · Midline (1126) · Endline (1025) · Grades 2–8</div>
+        </div>
+        <div style="margin-left:auto;display:flex;gap:8px;flex-wrap:wrap;">
+          <span class="lo-tag lo-strong">Best C&amp;V growth: +10.4</span>
+          <span class="lo-tag lo-weak">Low completion: 22.4%</span>
+        </div>
+      </div>
+      <div class="school-card-body">
+        <div class="g4" style="margin-bottom:1.2rem;">
+          <div class="stat tp"><div class="sl">Total Reading Minutes</div><div class="sv p" style="font-size:1.5rem;">7,59,295</div><div class="ss">Rank #3 — total mins</div></div>
+          <div class="stat tg"><div class="sl">C&amp;V Avg (Endline)</div><div class="sv g" style="font-size:1.7rem;">21.4</div><div class="ss">Up from 11.0 at baseline</div><span class="dt dup">+10.4</span></div>
+          <div class="stat tr"><div class="sl">ORF Avg (Endline)</div><div class="sv r" style="font-size:1.7rem;">3.80</div><div class="ss">Down from 5.47 at baseline</div><span class="dt ddn">−1.67</span></div>
+          <div class="stat tr"><div class="sl">Assignment Completion</div><div class="sv r" style="font-size:1.7rem;">22.4%</div><div class="ss">22 of 98 assignments</div></div>
+        </div>
+        <div class="g2">
+          <div class="card cp">
+            <h3>C&amp;V by Grade — All 3 Phases</h3>
+            <div class="csub">Comprehension &amp; Vocabulary median · Grades 2–8 (no Gr 1 baseline)</div>
+            <div class="cw" style="height:220px;"><canvas id="sr_cv"></canvas></div>
+          </div>
+          <div class="card cp">
+            <h3>ORF by Grade — All 3 Phases</h3>
+            <div class="csub">Oral Reading Fluency · Note declining trend in upper grades</div>
+            <div class="cw" style="height:220px;"><canvas id="sr_orf"></canvas></div>
+          </div>
+        </div>
+        <div class="ins io" style="margin-top:.75rem;"><strong>Highlight:</strong> SR Capital's biggest story is C&amp;V — nearly doubling from 11.0 to 21.4, with every grade showing positive growth. Grade 4 jumped from 9 → 28 (endline). However, ORF declined across upper grades and assignment completion at 22.4% is the lowest among schools with data. Increasing assignment engagement is the top priority for Year 2.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SURYA MODEL SCHOOL -->
+  <div class="pane" id="sc5">
+    <div class="school-card">
+      <div class="school-card-hdr" style="background:linear-gradient(135deg,var(--org-bg),#FFF8F0);">
+        <div class="school-icon" style="background:var(--org);color:#fff;">🏫</div>
+        <div>
+          <div style="font-family:'Nunito',sans-serif;font-weight:900;font-size:1.1rem;color:var(--org);">Surya Model School</div>
+          <div style="font-size:12px;color:var(--ink3);">Students: 649 · Phases: Baseline (526) · Midline (617) · Endline (536) · Grades 2–8</div>
+        </div>
+        <div style="margin-left:auto;display:flex;gap:8px;flex-wrap:wrap;">
+          <span class="lo-tag lo-strong">Rank #2 — Total Mins</span>
+          <span class="lo-tag lo-mod">67.3% completion</span>
+        </div>
+      </div>
+      <div class="school-card-body">
+        <div class="g4" style="margin-bottom:1.2rem;">
+          <div class="stat to"><div class="sl">Total Reading Minutes</div><div class="sv o" style="font-size:1.5rem;">9,88,584</div><div class="ss">Rank #2 — total mins</div></div>
+          <div class="stat tg"><div class="sl">C&amp;V Avg (Endline)</div><div class="sv g" style="font-size:1.7rem;">15.8</div><div class="ss">Up from 12.4 at baseline</div><span class="dt dup">+3.4</span></div>
+          <div class="stat tg"><div class="sl">ORF Avg (Endline)</div><div class="sv g" style="font-size:1.7rem;">12.25*</div><div class="ss">Up from 5.88 (*Gr 6–8)</div><span class="dt dup">+6.37</span></div>
+          <div class="stat tp"><div class="sl">Assignment Completion</div><div class="sv p" style="font-size:1.7rem;">67.3%</div><div class="ss">292 of 434 assignments</div></div>
+        </div>
+        <div class="g2">
+          <div class="card cp">
+            <h3>C&amp;V by Grade — All 3 Phases</h3>
+            <div class="csub">Comprehension &amp; Vocabulary median · Grades 2–8 (no Gr 1 baseline)</div>
+            <div class="cw" style="height:220px;"><canvas id="su_cv"></canvas></div>
+          </div>
+          <div class="card cp">
+            <h3>ORF by Grade — All 3 Phases</h3>
+            <div class="csub">ORF median · *Grades 6–8 show very high endline values</div>
+            <div class="cw" style="height:220px;"><canvas id="su_orf"></canvas></div>
+          </div>
+        </div>
+        <div class="ins io" style="margin-top:.75rem;"><strong>Highlight:</strong> Surya Model ranks #2 in total reading minutes (9.88L). C&amp;V improved across most grades. ORF endline values for Grades 6 (21.1), 7 (20.0), and 8 (30.9) are significantly high and should be validated — they may reflect assessment data worth reviewing. Grade 8 C&amp;V also showed strong growth: 19 → 25.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- KPS CONVENT -->
+  <div class="pane" id="sc6">
+    <div class="school-card">
+      <div class="school-card-hdr" style="background:linear-gradient(135deg,#FDF0F8,#FFF0FC);">
+        <div class="school-icon" style="background:#9B2D8E;color:#fff;">🏫</div>
+        <div>
+          <div style="font-family:'Nunito',sans-serif;font-weight:900;font-size:1.1rem;color:#9B2D8E;">KPS Convent</div>
+          <div style="font-size:12px;color:var(--ink3);">Students: 306 · Phases: Baseline (246) · Midline (276) · No Endline · Grades 1–8</div>
+        </div>
+        <div style="margin-left:auto;display:flex;gap:8px;flex-wrap:wrap;">
+          <span class="lo-tag lo-mod">BL + ML only</span>
+          <span class="lo-tag lo-weak">Endline pending</span>
+        </div>
+      </div>
+      <div class="school-card-body">
+        <div class="g4" style="margin-bottom:1.2rem;">
+          <div class="stat" style="border-top:4px solid #9B2D8E;"><div class="sl">Total Reading Minutes</div><div class="sv" style="color:#9B2D8E;font-size:1.5rem;">1,32,627</div><div class="ss">Rank #7 — total mins</div></div>
+          <div class="stat tg"><div class="sl">C&amp;V Avg (Midline)</div><div class="sv g" style="font-size:1.7rem;">9.5</div><div class="ss">Up from 9.1 at baseline</div><span class="dt dup">+0.4</span></div>
+          <div class="stat tr"><div class="sl">ORF Avg (Midline)</div><div class="sv r" style="font-size:1.7rem;">3.20</div><div class="ss">Down from 7.02 at baseline</div><span class="dt ddn">−3.82</span></div>
+          <div class="stat tp"><div class="sl">Weighted Avg</div><div class="sv p" style="font-size:1.7rem;">433</div><div class="ss">Mins per student</div></div>
+        </div>
+        <div class="g2">
+          <div class="card cp">
+            <h3>C&amp;V by Grade — BL vs ML</h3>
+            <div class="csub">Comprehension &amp; Vocabulary median · Grades 1–8</div>
+            <div class="cw" style="height:220px;"><canvas id="kps_cv"></canvas></div>
+          </div>
+          <div class="card cp">
+            <h3>ORF by Grade — BL vs ML</h3>
+            <div class="csub">Oral Reading Fluency · Significant midline decline across all grades</div>
+            <div class="cw" style="height:220px;"><canvas id="kps_orf"></canvas></div>
+          </div>
+        </div>
+        <div class="ins ir" style="margin-top:.75rem;"><strong>Alert:</strong> KPS Convent shows a sharp ORF decline at midline across all grades (baseline avg 7.02 → midline 3.20). C&amp;V improved marginally (+0.4). The ORF pattern should be investigated — it may reflect assessment conditions or a need for targeted fluency support. Endline assessment is required to track recovery. Reading minutes (1.32L) are the lowest in the cohort and need to increase.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- OXFORD ANGEL SCHOOL -->
+  <div class="pane" id="sc7">
+    <div class="school-card">
+      <div class="school-card-hdr" style="background:linear-gradient(135deg,var(--grn-bg),#F5FFF8);">
+        <div class="school-icon" style="background:#0A7A50;color:#fff;">🏫</div>
+        <div>
+          <div style="font-family:'Nunito',sans-serif;font-weight:900;font-size:1.1rem;color:#0A7A50;">Oxford Angel School</div>
+          <div style="font-size:12px;color:var(--ink3);">Students: 489 · Phases: Baseline (349) · Midline (459) · No Endline · Grades 2–8</div>
+        </div>
+        <div style="margin-left:auto;display:flex;gap:8px;flex-wrap:wrap;">
+          <span class="lo-tag lo-mod">BL + ML only</span>
+          <span class="lo-tag lo-mod">C&amp;V improving</span>
+        </div>
+      </div>
+      <div class="school-card-body">
+        <div class="g4" style="margin-bottom:1.2rem;">
+          <div class="stat" style="border-top:4px solid #0A7A50;"><div class="sl">Total Reading Minutes</div><div class="sv" style="color:#0A7A50;font-size:1.5rem;">4,27,435</div><div class="ss">Rank #4 — total mins</div></div>
+          <div class="stat tg"><div class="sl">C&amp;V Avg (Midline)</div><div class="sv g" style="font-size:1.7rem;">13.1</div><div class="ss">Up from 11.2 at baseline</div><span class="dt dup">+1.9</span></div>
+          <div class="stat to"><div class="sl">ORF Avg (Midline)</div><div class="sv o" style="font-size:1.7rem;">3.69</div><div class="ss">Down from 4.45 at baseline</div><span class="dt ddn">−0.76</span></div>
+          <div class="stat tp"><div class="sl">Weighted Avg</div><div class="sv p" style="font-size:1.7rem;">874</div><div class="ss">Mins per student</div></div>
+        </div>
+        <div class="g2">
+          <div class="card cp">
+            <h3>C&amp;V by Grade — BL vs ML</h3>
+            <div class="csub">Comprehension &amp; Vocabulary median · Grades 2–8 (no Gr 1 baseline)</div>
+            <div class="cw" style="height:220px;"><canvas id="oa_cv"></canvas></div>
+          </div>
+          <div class="card cp">
+            <h3>ORF by Grade — BL vs ML</h3>
+            <div class="csub">Oral Reading Fluency · Grades 2–8</div>
+            <div class="cw" style="height:220px;"><canvas id="oa_orf"></canvas></div>
+          </div>
+        </div>
+        <div class="ins ip" style="margin-top:.75rem;"><strong>Highlight:</strong> Oxford Angel shows positive C&amp;V improvement at midline (+1.9 avg). Grade 8 C&amp;V is notably strong: 22 (BL) → 24 (ML). ORF shows a modest decline (-0.76 avg) at midline. Endline assessment is needed for final impact measurement. Reading minutes rank #4 (4.27L) with good per-student weighted average of 874.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="div"/>
+
+<!-- ═══ S8 · NEW SCHOOLS BASELINE ═══ -->
+<section class="sec" id="s8">
+  <div class="sec-n">Section 8</div>
+  <h2>New Schools Baseline</h2>
+  <p class="sec-d">Baseline assessment data for 7 newly onboarded schools — City Modern, Little Flowers, Nav Jeevan, New Sainik International, OPS International, Suman Vidya Mandir, and Vivek Modern School.</p>
+
+  <div class="ins ib" style="margin-bottom:1.2rem;">
+    <strong>New school cohort:</strong> 7 new schools have been assessed at baseline with a combined enrolment of 3,454 students. These schools span Grades 1–8. Baseline data provides the starting benchmark for Year 2 tracking under the CCS–Freadom programme.
+  </div>
+
+  <div class="tabs" id="newSchoolTabs">
+    <button class="tab on" onclick="swNew('ns1',this)">City Modern</button>
+    <button class="tab" onclick="swNew('ns2',this)">Little Flowers</button>
+    <button class="tab" onclick="swNew('ns3',this)">Nav Jeevan</button>
+    <button class="tab" onclick="swNew('ns4',this)">New Sainik</button>
+    <button class="tab" onclick="swNew('ns5',this)">OPS International</button>
+    <button class="tab" onclick="swNew('ns6',this)">Suman Vidya</button>
+    <button class="tab" onclick="swNew('ns7',this)">Vivek Modern</button>
+  </div>
+
+  <div class="pane on" id="ns1">
+    <div class="card cp">
+      <h3>City Modern Public School — Baseline Assessment (536 students)</h3>
+      <div class="csub">Grades 1–5 · Comprehension &amp; Vocabulary, ORF, and Median Time Taken</div>
+      <div class="cw" style="height:240px;"><canvas id="ns_city_cv"></canvas></div>
+      <div style="margin-top:1rem;overflow-x:auto;"><table class="tbl"><thead><tr><th>Grade</th><th>C&amp;V Score</th><th>ORF Score</th><th>Median Time (mins)</th></tr></thead><tbody>
+        <tr><td>Grade 1</td><td>13.5</td><td>2.55</td><td>20.38</td></tr>
+        <tr><td>Grade 2</td><td>9</td><td>2.60</td><td>19.93</td></tr>
+        <tr><td>Grade 3</td><td>8</td><td>3.40</td><td>18.97</td></tr>
+        <tr><td>Grade 4</td><td>9</td><td>2.80</td><td>21.35</td></tr>
+        <tr><td>Grade 5</td><td>13</td><td>4.20</td><td>17.70</td></tr>
+      </tbody></table></div>
+    </div>
+  </div>
+
+  <div class="pane" id="ns2">
+    <div class="card cp">
+      <h3>Little Flowers Public School — Baseline Assessment (963 students)</h3>
+      <div class="csub">Grades 1–8 · Comprehension &amp; Vocabulary, ORF, and Median Time Taken</div>
+      <div class="cw" style="height:240px;"><canvas id="ns_lf_cv"></canvas></div>
+      <div style="margin-top:1rem;overflow-x:auto;"><table class="tbl"><thead><tr><th>Grade</th><th>C&amp;V Score</th><th>ORF Score</th><th>Median Time (mins)</th></tr></thead><tbody>
+        <tr><td>Grade 1</td><td>22</td><td>3.80</td><td>21.08</td></tr>
+        <tr><td>Grade 2</td><td>21</td><td>6.50</td><td>23.71</td></tr>
+        <tr><td>Grade 3</td><td>11</td><td>5.90</td><td>19.20</td></tr>
+        <tr><td>Grade 4</td><td>10.5</td><td>6.25</td><td>17.91</td></tr>
+        <tr><td>Grade 5</td><td>13</td><td>6.65</td><td>16.71</td></tr>
+        <tr><td>Grade 6</td><td>11</td><td>3.70</td><td>16.77</td></tr>
+        <tr><td>Grade 7</td><td>12.5</td><td>6.00</td><td>16.52</td></tr>
+        <tr><td>Grade 8</td><td>22</td><td>4.30</td><td>16.75</td></tr>
+      </tbody></table></div>
+    </div>
+  </div>
+
+  <div class="pane" id="ns3">
+    <div class="card cp">
+      <h3>Nav Jeevan Model School — Baseline Assessment (509 students)</h3>
+      <div class="csub">Grades 1–8 · Comprehension &amp; Vocabulary, ORF, and Median Time Taken</div>
+      <div class="cw" style="height:240px;"><canvas id="ns_nj_cv"></canvas></div>
+      <div style="margin-top:1rem;overflow-x:auto;"><table class="tbl"><thead><tr><th>Grade</th><th>C&amp;V Score</th><th>ORF Score</th><th>Median Time (mins)</th></tr></thead><tbody>
+        <tr><td>Grade 1</td><td>27</td><td>2.90</td><td>10.02</td></tr>
+        <tr><td>Grade 2</td><td>22</td><td>3.60</td><td>22.62</td></tr>
+        <tr><td>Grade 3</td><td>20</td><td>2.55</td><td>26.07</td></tr>
+        <tr><td>Grade 4</td><td>14</td><td>2.70</td><td>14.76</td></tr>
+        <tr><td>Grade 5</td><td>9</td><td>3.70</td><td>20.53</td></tr>
+        <tr><td>Grade 6</td><td>9</td><td>3.10</td><td>20.12</td></tr>
+        <tr><td>Grade 7</td><td>9</td><td>2.90</td><td>22.00</td></tr>
+        <tr><td>Grade 8</td><td>17</td><td>3.00</td><td>26.08</td></tr>
+      </tbody></table></div>
+    </div>
+  </div>
+
+  <div class="pane" id="ns4">
+    <div class="card cp">
+      <h3>New Sainik International School — Baseline Assessment (332 students)</h3>
+      <div class="csub">Grades 1–8 · Comprehension &amp; Vocabulary, ORF, and Median Time Taken</div>
+      <div class="cw" style="height:240px;"><canvas id="ns_si_cv"></canvas></div>
+      <div style="margin-top:1rem;overflow-x:auto;"><table class="tbl"><thead><tr><th>Grade</th><th>C&amp;V Score</th><th>ORF Score</th><th>Median Time (mins)</th></tr></thead><tbody>
+        <tr><td>Grade 1</td><td>8</td><td>3.20</td><td>9.85</td></tr>
+        <tr><td>Grade 2</td><td>7</td><td>2.80</td><td>16.27</td></tr>
+        <tr><td>Grade 3</td><td>8</td><td>3.30</td><td>16.92</td></tr>
+        <tr><td>Grade 4</td><td>8</td><td>2.45</td><td>16.60</td></tr>
+        <tr><td>Grade 5</td><td>9</td><td>2.10</td><td>18.53</td></tr>
+        <tr><td>Grade 6</td><td>8</td><td>2.20</td><td>25.70</td></tr>
+        <tr><td>Grade 7</td><td>11</td><td>4.25</td><td>19.89</td></tr>
+        <tr><td>Grade 8</td><td>20</td><td>5.20</td><td>25.78</td></tr>
+      </tbody></table></div>
+    </div>
+  </div>
+
+  <div class="pane" id="ns5">
+    <div class="card cp">
+      <h3>OPS International School — Baseline Assessment (187 students)</h3>
+      <div class="csub">Grades 1–8 · Comprehension &amp; Vocabulary, ORF, and Median Time Taken</div>
+      <div class="cw" style="height:240px;"><canvas id="ns_ops_cv"></canvas></div>
+      <div style="margin-top:1rem;overflow-x:auto;"><table class="tbl"><thead><tr><th>Grade</th><th>C&amp;V Score</th><th>ORF Score</th><th>Median Time (mins)</th></tr></thead><tbody>
+        <tr><td>Grade 1</td><td>8</td><td>3.65</td><td>24.07</td></tr>
+        <tr><td>Grade 2</td><td>8</td><td>3.70</td><td>24.53</td></tr>
+        <tr><td>Grade 3</td><td>8</td><td>4.00</td><td>20.97</td></tr>
+        <tr><td>Grade 4</td><td>9</td><td>3.00</td><td>19.48</td></tr>
+        <tr><td>Grade 5</td><td>9</td><td>5.20</td><td>19.26</td></tr>
+        <tr><td>Grade 6</td><td>8</td><td>3.60</td><td>25.72</td></tr>
+        <tr><td>Grade 7</td><td>10</td><td>2.30</td><td>37.08</td></tr>
+        <tr><td>Grade 8</td><td>16</td><td>5.80</td><td>28.17</td></tr>
+      </tbody></table></div>
+    </div>
+  </div>
+
+  <div class="pane" id="ns6">
+    <div class="card cp">
+      <h3>Suman Vidya Mandir — Baseline Assessment (325 students)</h3>
+      <div class="csub">Grades 1–8 · Comprehension &amp; Vocabulary, ORF, and Median Time Taken</div>
+      <div class="cw" style="height:240px;"><canvas id="ns_sv_cv"></canvas></div>
+      <div style="margin-top:1rem;overflow-x:auto;"><table class="tbl"><thead><tr><th>Grade</th><th>C&amp;V Score</th><th>ORF Score</th><th>Median Time (mins)</th></tr></thead><tbody>
+        <tr><td>Grade 1</td><td>19</td><td>4.30</td><td>4.45</td></tr>
+        <tr><td>Grade 2</td><td>24</td><td>4.10</td><td>4.46</td></tr>
+        <tr><td>Grade 3</td><td>13</td><td>5.20</td><td>2.52</td></tr>
+        <tr><td>Grade 4</td><td>10</td><td>3.10</td><td>11.75</td></tr>
+        <tr><td>Grade 5</td><td>9</td><td>2.65</td><td>21.29</td></tr>
+        <tr><td>Grade 6</td><td>7</td><td>2.90</td><td>18.98</td></tr>
+        <tr><td>Grade 7</td><td>9</td><td>2.70</td><td>14.70</td></tr>
+        <tr><td>Grade 8</td><td>13</td><td>2.70</td><td>16.05</td></tr>
+      </tbody></table></div>
+    </div>
+  </div>
+
+  <div class="pane" id="ns7">
+    <div class="card cp">
+      <h3>Vivek Modern School — Baseline Assessment (602 students)</h3>
+      <div class="csub">Grades 1–5 · Comprehension &amp; Vocabulary, ORF, and Median Time Taken</div>
+      <div class="cw" style="height:240px;"><canvas id="ns_vm_cv"></canvas></div>
+      <div style="margin-top:1rem;overflow-x:auto;"><table class="tbl"><thead><tr><th>Grade</th><th>C&amp;V Score</th><th>ORF Score</th><th>Median Time (mins)</th></tr></thead><tbody>
+        <tr><td>Grade 1</td><td>12</td><td>2.10</td><td>34.33</td></tr>
+        <tr><td>Grade 2</td><td>11</td><td>2.50</td><td>19.05</td></tr>
+        <tr><td>Grade 3</td><td>9</td><td>2.40</td><td>24.57</td></tr>
+        <tr><td>Grade 4</td><td>9</td><td>2.20</td><td>21.60</td></tr>
+        <tr><td>Grade 5</td><td>11</td><td>2.75</td><td>24.57</td></tr>
+      </tbody></table></div>
+    </div>
+  </div>
+
+  <div class="ins io" style="margin-top:1rem;">
+    <strong>New schools insight:</strong> Nav Jeevan leads new schools with the highest Grade 1 C&amp;V baseline (27). Little Flowers shows strong ORF at grades 2–5. New Sainik International and OPS International have the lowest C&amp;V baselines (7–9 range), making them priority schools for intensive reading support in Year 2. Combined total: 3,454 students assessed at baseline across 7 new schools.
+  </div>
+</section>
+
+<hr class="div"/>
+
+<!-- ═══ S9 · IMPACT SUMMARY ═══ -->
+<section class="sec" id="s9">
+  <div class="sec-n">Section 9</div>
+  <h2>Impact Summary</h2>
+  <p class="sec-d">The full picture of what the Freadom Reading Program achieved across CCS Schools in 2025–26.</p>
+
+  <div style="background:linear-gradient(135deg,#3D1A78 0%,#6B3FA0 55%,#F5821F 100%);border-radius:var(--r);padding:2.5rem;color:#fff;margin-bottom:1.5rem;box-shadow:var(--shl);position:relative;overflow:hidden;">
+    <div style="position:absolute;top:-40px;right:-40px;width:240px;height:240px;border-radius:50%;background:rgba(255,255,255,.05);"></div>
+    <div style="font-family:'Nunito',sans-serif;font-size:clamp(1.1rem,2.5vw,1.4rem);font-weight:900;line-height:1.3;max-width:700px;margin-bottom:1.5rem;">
+      "In 2025–26, Freadom logged over 82 lakh reading minutes across 7 CCS partner schools, reached 4,237 students, and is now onboarding 7 new schools covering 3,454 more learners. Hari Vidya Bhawan's 43.6 lakh minutes alone represent the power of school-wide commitment to reading."
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:1.5rem;">
+      <div style="background:rgba(255,255,255,.15);border-radius:var(--rs);padding:1rem;text-align:center;">
+        <div style="font-family:'Nunito',sans-serif;font-size:1.9rem;font-weight:900;color:#F5C518;">4,237</div>
+        <div style="font-size:11.5px;opacity:.85;margin-top:3px;">Students (existing schools)</div>
+      </div>
+      <div style="background:rgba(255,255,255,.15);border-radius:var(--rs);padding:1rem;text-align:center;">
+        <div style="font-family:'Nunito',sans-serif;font-size:1.9rem;font-weight:900;color:#25C278;">82.6L</div>
+        <div style="font-size:11.5px;opacity:.85;margin-top:3px;">Total reading minutes</div>
+      </div>
+      <div style="background:rgba(255,255,255,.15);border-radius:var(--rs);padding:1rem;text-align:center;">
+        <div style="font-family:'Nunito',sans-serif;font-size:1.9rem;font-weight:900;color:var(--org);">3,454</div>
+        <div style="font-size:11.5px;opacity:.85;margin-top:3px;">New school students (baseline)</div>
+      </div>
+      <div style="background:rgba(255,255,255,.15);border-radius:var(--rs);padding:1rem;text-align:center;">
+        <div style="font-family:'Nunito',sans-serif;font-size:1.9rem;font-weight:900;color:#B48EE0;">14</div>
+        <div style="font-size:11.5px;opacity:.85;margin-top:3px;">Total schools in programme</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="g3" style="margin-bottom:1.5rem;">
+    <div class="rc-card">
+      <div class="rc-tag rt-w">Top Achievement</div>
+      <h4>SR Capital — C&amp;V nearly doubled</h4>
+      <p>SR Capital School's Comprehension &amp; Vocabulary average grew from 11.0 (baseline) to 21.4 (endline) — nearly doubling across all grades. Grade 4 alone grew from 9 to 28. This is the single strongest assessment improvement in the CCS cohort.</p>
+    </div>
+    <div class="rc-card">
+      <div class="rc-tag rt-w">Engagement Leader</div>
+      <h4>Hari Vidya Bhawan — 43.6L minutes</h4>
+      <p>HVB dominates both total (43.6L) and per-student (3,624 mins/student) reading engagement. With 83.9% assignment completion across 5,982 assignments, HVB sets the benchmark for programme engagement. C&amp;V improved from 12.6 to 16.8.</p>
+    </div>
+    <div class="rc-card">
+      <div class="rc-tag rt-a">Priority Action</div>
+      <h4>ORF decline in upper grades — investigate</h4>
+      <p>Multiple schools (HVB, SR Capital, KPS Convent) show declining ORF averages — particularly in Grades 4–8. This warrants targeted oral reading fluency intervention. Angel Public (Gr 1–5 only) is the only school showing consistent ORF growth across all phases.</p>
+    </div>
+  </div>
+
+  <div class="ins ig">
+    <strong>2026–27 recommendations:</strong> (1) Conduct Endline assessments for KPS Convent and Oxford Angel School. (2) Investigate ORF decline patterns in upper grades across HVB, SR Capital, and KPS. (3) Increase SR Capital assignment completion from 22.4% — establish a structured daily assignment routine. (4) Leverage Suman Vidya Mandir's strong ORF foundation (Grade 3: 5.2) for new school cohort. (5) Target 1 crore+ total reading minutes in Year 2.
+  </div>
+</section>
+
+<!-- FOOTER -->
+<div style="text-align:center;padding:2.5rem 0 1rem;border-top:1px solid var(--brd);margin-top:3rem;">
+  <div class="flogo" style="font-size:1.2rem;color:var(--pur);">frea<em style="color:var(--org);">dom</em></div>
+  <div style="font-size:13px;color:var(--ink3);margin-top:.4rem;">Powered by Freadom Edu | Creating a nation of readers</div>
+  <div style="font-size:11.5px;color:var(--ink3);margin-top:.2rem;opacity:.7;">CCS Schools · Academic Year 2025–26 · All data sourced from Freadom assessment and engagement records</div>
+</div>
+
+</div>
+
+<script>
+const F='Nunito',TICK='#8A80A0',GRID='rgba(107,63,160,.07)';
+const PUR='rgba(107,63,160,.85)',ORG='rgba(245,130,31,.85)',GRN='rgba(37,194,120,.85)';
+const AMB='rgba(196,120,0,.85)',RED='rgba(217,48,48,.85)',BLU='rgba(30,111,192,.85)';
+const base={responsive:true,maintainAspectRatio:false,
+  plugins:{legend:{labels:{font:{family:F,size:11},color:TICK}}},
+  scales:{x:{ticks:{font:{family:F,size:10},color:TICK},grid:{color:GRID}},
+          y:{ticks:{font:{family:F,size:11},color:TICK},grid:{color:GRID}}}};
+function leg(pos='bottom'){return{position:pos,labels:{font:{family:F,size:11},color:TICK,boxWidth:10,padding:10}};}
+function bmeOpts(yMax){return{...base,plugins:{legend:leg()},scales:{x:{ticks:{font:{family:F,size:10},color:TICK},grid:{display:false}},y:{min:0,max:yMax,ticks:{font:{family:F,size:11},color:TICK},grid:{color:GRID}}}};}
+
+/* ── S3 Reading Minutes ── */
+const schools7=['Hari Vidya\nBhawan','Angel Public\nSmart','Surya Model\nSchool','Oxford Angel\nSchool','Sai Nath\nPublic','SR Capital\nSr.Sec.','KPS\nConvent'];
+const totalMins=[4363321,389360,988584,427435,203379,759295,132627];
+const weightedAvgs=[3624.02,3041.88,1523.24,874.10,701.31,648.42,433.42];
+
+new Chart(document.getElementById('totalMinsChart'),{type:'bar',
+  data:{labels:schools7,datasets:[{label:'Total Reading Minutes',data:totalMins,
+    backgroundColor:[AMB,PUR,ORG,BLU,GRN,RED,'rgba(107,63,160,.4)'],borderRadius:6,borderSkipped:false}]},
+  options:{...base,indexAxis:'y',plugins:{legend:{display:false}},
+    scales:{x:{ticks:{font:{family:F,size:10},color:TICK,callback:v=>v>=1000000?(v/1000000).toFixed(1)+'M':v>=1000?(v/1000).toFixed(0)+'K':v},grid:{color:GRID}},
+            y:{ticks:{font:{family:F,size:10},color:TICK},grid:{display:false}}}}
+});
+new Chart(document.getElementById('weightedAvgChart'),{type:'bar',
+  data:{labels:schools7,datasets:[{label:'Weighted Avg (mins/student)',data:weightedAvgs,
+    backgroundColor:[AMB,PUR,ORG,BLU,GRN,RED,'rgba(107,63,160,.4)'],borderRadius:6,borderSkipped:false}]},
+  options:{...base,indexAxis:'y',plugins:{legend:{display:false}},
+    scales:{x:{ticks:{font:{family:F,size:10},color:TICK},grid:{color:GRID}},
+            y:{ticks:{font:{family:F,size:10},color:TICK},grid:{display:false}}}}
+});
+
+/* ── S4 Assignment Completion ── */
+new Chart(document.getElementById('completionChart'),{type:'bar',
+  data:{labels:['Hari Vidya\nBhawan','Surya Model\nSchool','Oxford Angel\nSchool','SR Capital\nSr.Sec.'],
+    datasets:[{label:'Completion %',data:[83.9,67.3,53.3,22.4],
+      backgroundColor:[GRN,AMB,BLU,RED],borderRadius:6,borderSkipped:false}]},
+  options:{...base,plugins:{legend:{display:false}},
+    scales:{x:{ticks:{font:{family:F,size:10},color:TICK},grid:{display:false}},
+            y:{min:0,max:100,ticks:{callback:v=>v+'%',font:{family:F,size:11},color:TICK},grid:{color:GRID}}}}
+});
+new Chart(document.getElementById('hvbCompletionChart'),{type:'bar',
+  data:{labels:['Gr 1','Gr 2','Gr 3','Gr 4','Gr 5','Gr 6','Gr 7','Gr 8'],
+    datasets:[
+      {label:'Total',data:[594,1645,1050,169,127,282,588,1527],backgroundColor:'rgba(138,128,160,.3)',borderRadius:4,borderSkipped:false},
+      {label:'Completed',data:[362,1475,892,168,100,202,547,1272],backgroundColor:PUR,borderRadius:4,borderSkipped:false}
+    ]},
+  options:{...base,plugins:{legend:leg()},scales:{x:{ticks:{font:{family:F,size:10},color:TICK},grid:{display:false}},y:{ticks:{font:{family:F,size:11},color:TICK},grid:{color:GRID}}}}
+});
+
+/* ── S5 Assessment Charts ── */
+const schools5=['Angel Public','Hari Vidya','Sai Nath','SR Capital','Surya Model'];
+// C&V
+new Chart(document.getElementById('cvAllChart'),{type:'bar',
+  data:{labels:schools5,
+    datasets:[
+      {label:'Baseline',data:[21.2,12.6,13.1,11.0,12.4],backgroundColor:'rgba(138,128,160,.4)',borderRadius:4,borderSkipped:false},
+      {label:'Midline', data:[21.6,14.9,14.8,16.4,12.8],backgroundColor:ORG,borderRadius:4,borderSkipped:false},
+      {label:'Endline', data:[24.3,16.8,16.4,21.4,15.8],backgroundColor:PUR,borderRadius:4,borderSkipped:false}
+    ]},
+  options:bmeOpts(30)
+});
+new Chart(document.getElementById('cvPartialChart'),{type:'bar',
+  data:{labels:['KPS Convent','Oxford Angel'],
+    datasets:[
+      {label:'Baseline',data:[9.1,11.2],backgroundColor:'rgba(138,128,160,.4)',borderRadius:4,borderSkipped:false},
+      {label:'Midline', data:[9.5,13.1],backgroundColor:ORG,borderRadius:4,borderSkipped:false}
+    ]},
+  options:bmeOpts(20)
+});
+// ORF
+new Chart(document.getElementById('orfAllChart'),{type:'bar',
+  data:{labels:schools5,
+    datasets:[
+      {label:'Baseline',data:[6.74,5.86,6.42,5.47,5.88],backgroundColor:'rgba(138,128,160,.4)',borderRadius:4,borderSkipped:false},
+      {label:'Midline', data:[7.62,4.56,6.54,4.70,5.69],backgroundColor:ORG,borderRadius:4,borderSkipped:false},
+      {label:'Endline', data:[7.92,3.81,5.99,3.80,12.25],backgroundColor:[GRN,RED,AMB,RED,GRN],borderRadius:4,borderSkipped:false}
+    ]},
+  options:bmeOpts(14)
+});
+new Chart(document.getElementById('orfPartialChart'),{type:'bar',
+  data:{labels:['KPS Convent','Oxford Angel'],
+    datasets:[
+      {label:'Baseline',data:[7.02,4.45],backgroundColor:'rgba(138,128,160,.4)',borderRadius:4,borderSkipped:false},
+      {label:'Midline', data:[3.20,3.69],backgroundColor:RED,borderRadius:4,borderSkipped:false}
+    ]},
+  options:bmeOpts(10)
+});
+
+/* Time Taken */
+const timeSchools5=['Angel Public','Hari Vidya','Sai Nath','SR Capital','Surya Model'];
+// compute averages from actual data
+const timeBL5=[ (19.34+19.96+19.85+28.22)/4, (6.72+6.25+7.4+5.33+14.13+8.65+14.38+15.68)/8, (3.15+11.26+11.13+8.25+20.21+19.43+13.72)/7, (24.05+4.81+4.74+6.27+10.25+18.75+18.97)/7, (18.62+16.07+30.67+17.26+16.18+24.77+24.57)/7 ];
+const timeML5=[ (12.05+9.23+8.04+23.08+29.03)/5, (11.63+4.57+8.56+8.3+8.92+7.27+15+12.72)/8, (6.86+3.58+26.17+7.92+16.12+16.62+10.14+19.78)/8, (1.47+1.78+4.28+10.87+13.58+13.12+13.3+11.89)/8, (12.12+7.56+16.8+13.38+16.18+20.02+19.15+15.07)/8 ];
+const timeEL5=[ (5.94+11.2+6.83+20.02+22.87)/5, (12.27+5.11+7.81+6.03+8.92+4.45+8.03+9.98)/8, (4.05+20.72+13.88+14.37+14.6+9.36+3.62+15.65)/8, (2.5+2.08+6.97+6.68+8.13+12.77+8.47+10.66)/8, (6.57+8.08+8.38+9.07+14.94+16.86+18.57+16.62)/8 ];
+new Chart(document.getElementById('timeAllChart'),{type:'bar',
+  data:{labels:timeSchools5,
+    datasets:[
+      {label:'Baseline Avg (mins)',data:timeBL5.map(v=>+v.toFixed(1)),backgroundColor:'rgba(138,128,160,.4)',borderRadius:4,borderSkipped:false},
+      {label:'Midline Avg (mins)', data:timeML5.map(v=>+v.toFixed(1)),backgroundColor:ORG,borderRadius:4,borderSkipped:false},
+      {label:'Endline Avg (mins)', data:timeEL5.map(v=>+v.toFixed(1)),backgroundColor:GRN,borderRadius:4,borderSkipped:false}
+    ]},
+  options:bmeOpts(30)
+});
+const timeBLp=[(4.96+9.13+14.63+20.14+14.05+15.51+21.54+7.53)/8,(6.01+8.83+16.22+11.49+11.62+13.94+11.93)/7];
+const timeMLp=[(5.85+5.5+4.95+8.31+10.08+7.56+5.49+5.27)/8,(6.03+6.82+8.38+12.52+12.83+9.93+12.85+12.18)/8];
+new Chart(document.getElementById('timePartialChart'),{type:'bar',
+  data:{labels:['KPS Convent','Oxford Angel'],
+    datasets:[
+      {label:'Baseline Avg (mins)',data:timeBLp.map(v=>+v.toFixed(1)),backgroundColor:'rgba(138,128,160,.4)',borderRadius:4,borderSkipped:false},
+      {label:'Midline Avg (mins)', data:timeMLp.map(v=>+v.toFixed(1)),backgroundColor:ORG,borderRadius:4,borderSkipped:false}
+    ]},
+  options:bmeOpts(20)
+});
+
+/* ── Individual School Charts ── */
+function gradeChart(id,grades,bl,ml,el,yMax){
+  const datasets=[
+    {label:'Baseline',data:bl,backgroundColor:'rgba(138,128,160,.4)',borderRadius:4,borderSkipped:false},
+    {label:'Midline', data:ml,backgroundColor:ORG,borderRadius:4,borderSkipped:false}
+  ];
+  if(el) datasets.push({label:'Endline',data:el,backgroundColor:PUR,borderRadius:4,borderSkipped:false});
+  new Chart(document.getElementById(id),{type:'bar',data:{labels:grades,datasets},options:bmeOpts(yMax)});
+}
+
+// ANGEL PUBLIC (Gr1–5, no BL for Gr1)
+gradeChart('ap_cv',['Gr1','Gr2','Gr3','Gr4','Gr5'],[null,22,20,24,19],[20,24,26,18,20],[28,28,26,28,11.5],35);
+gradeChart('ap_orf',['Gr1','Gr2','Gr3','Gr4','Gr5'],[null,5.9,6.6,7.9,6.55],[7.65,6.6,7.45,8.4,8],[8.15,7.2,7.65,8.3,8.3],12);
+// HARI VIDYA BHAWAN
+gradeChart('hv_cv',['Gr1','Gr2','Gr3','Gr4','Gr5','Gr6','Gr7','Gr8'],[20,23,11,9,8,8,8,13.5],[24,22,14,8,13,9,12,17],[25,27,11,15,9,15.5,12,20],35);
+gradeChart('hv_orf',['Gr1','Gr2','Gr3','Gr4','Gr5','Gr6','Gr7','Gr8'],[7.1,6.1,6,6.3,5.55,4.85,3.9,7.1],[7.2,7.3,5.5,2.6,3.4,3.1,2.7,4.7],[7.7,6.55,4.6,2.2,2.5,1.9,2.3,2.7],12);
+// SAI NATH (no BL Gr1)
+gradeChart('sn_cv',['Gr1','Gr2','Gr3','Gr4','Gr5','Gr6','Gr7','Gr8'],[null,14,13,12,15,11.5,9.5,16.5],[17,13,21,15,12,10,11,19],[8.5,24,20,21.5,11,10,10,26],35);
+gradeChart('sn_orf',['Gr1','Gr2','Gr3','Gr4','Gr5','Gr6','Gr7','Gr8'],[null,7.5,5.6,6,5.9,6.1,6.85,7],[7.1,7.2,4.65,6,6.6,6.35,6.35,8.1],[7.55,6.2,6.1,6.75,5.3,5.1,4.1,6.8],12);
+// SR CAPITAL (no BL Gr1)
+gradeChart('sr_cv',['Gr1','Gr2','Gr3','Gr4','Gr5','Gr6','Gr7','Gr8'],[null,11,7,9,11,8,10,21],[14,15,22,16,18,11,15,20],[17,27,25,28,20,16,14,24.5],35);
+gradeChart('sr_orf',['Gr1','Gr2','Gr3','Gr4','Gr5','Gr6','Gr7','Gr8'],[null,7.05,4.4,4.5,5.6,4.3,6.25,6.2],[8.4,5.1,4.6,2.7,3.7,4.2,3.8,5.1],[5.1,3.55,3,2.4,2.45,4.75,4.7,4.45],12);
+// SURYA MODEL (no BL Gr1)
+gradeChart('su_cv',['Gr1','Gr2','Gr3','Gr4','Gr5','Gr6','Gr7','Gr8'],[null,12,8,18,10,9,11,19],[10,16,11,9,13,12,12,19],[18,19,9,14,11,16.5,14,25],35);
+gradeChart('su_orf',['Gr1','Gr2','Gr3','Gr4','Gr5','Gr6','Gr7','Gr8'],[null,6.25,3.9,5.9,5.2,6.4,6.25,7.25],[6,3.75,4,5.3,6.6,6.8,5.8,7.3],[3,4.3,4.8,6.8,7.1,21.1,20,30.9],35);
+// KPS (BL+ML only)
+gradeChart('kps_cv',['Gr1','Gr2','Gr3','Gr4','Gr5','Gr6','Gr7','Gr8'],[10,8,7,8,11,10,10.5,8],[7,9,9,7,12,9.5,10.5,12],null,20);
+gradeChart('kps_orf',['Gr1','Gr2','Gr3','Gr4','Gr5','Gr6','Gr7','Gr8'],[7.05,6.25,5.5,7.6,7.3,7.6,7.45,7.4],[3.35,3.35,3.4,2.2,3.9,3.4,2.5,3.5],null,12);
+// OXFORD ANGEL (BL+ML only, no BL Gr1)
+gradeChart('oa_cv',['Gr1','Gr2','Gr3','Gr4','Gr5','Gr6','Gr7','Gr8'],[null,7,7.5,10,10,8,14,22],[11,10,11,10,13,12,14,24],null,30);
+gradeChart('oa_orf',['Gr1','Gr2','Gr3','Gr4','Gr5','Gr6','Gr7','Gr8'],[null,3.2,4.5,5.5,3.55,3.6,2.6,8.2],[3.8,3.5,2.8,3,3.9,3.1,3.9,5.5],null,12);
+
+/* ── New School Charts ── */
+function newSchoolChart(id, grades, cvData, orfData){
+  new Chart(document.getElementById(id),{type:'bar',
+    data:{labels:grades,
+      datasets:[
+        {label:'C&V Score (out of 30)',data:cvData,backgroundColor:PUR,borderRadius:4,borderSkipped:false},
+        {label:'ORF Score (out of 10)',data:orfData,backgroundColor:ORG,borderRadius:4,borderSkipped:false}
+      ]},
+    options:{...base,plugins:{legend:leg()},scales:{x:{ticks:{font:{family:F,size:10},color:TICK},grid:{display:false}},y:{min:0,max:30,ticks:{font:{family:F,size:11},color:TICK},grid:{color:GRID}}}}
+  });
+}
+newSchoolChart('ns_city_cv',['Gr1','Gr2','Gr3','Gr4','Gr5'],[13.5,9,8,9,13],[2.55,2.6,3.4,2.8,4.2]);
+newSchoolChart('ns_lf_cv',['Gr1','Gr2','Gr3','Gr4','Gr5','Gr6','Gr7','Gr8'],[22,21,11,10.5,13,11,12.5,22],[3.8,6.5,5.9,6.25,6.65,3.7,6,4.3]);
+newSchoolChart('ns_nj_cv',['Gr1','Gr2','Gr3','Gr4','Gr5','Gr6','Gr7','Gr8'],[27,22,20,14,9,9,9,17],[2.9,3.6,2.55,2.7,3.7,3.1,2.9,3]);
+newSchoolChart('ns_si_cv',['Gr1','Gr2','Gr3','Gr4','Gr5','Gr6','Gr7','Gr8'],[8,7,8,8,9,8,11,20],[3.2,2.8,3.3,2.45,2.1,2.2,4.25,5.2]);
+newSchoolChart('ns_ops_cv',['Gr1','Gr2','Gr3','Gr4','Gr5','Gr6','Gr7','Gr8'],[8,8,8,9,9,8,10,16],[3.65,3.7,4,3,5.2,3.6,2.3,5.8]);
+newSchoolChart('ns_sv_cv',['Gr1','Gr2','Gr3','Gr4','Gr5','Gr6','Gr7','Gr8'],[19,24,13,10,9,7,9,13],[4.3,4.1,5.2,3.1,2.65,2.9,2.7,2.7]);
+newSchoolChart('ns_vm_cv',['Gr1','Gr2','Gr3','Gr4','Gr5'],[12,11,9,9,11],[2.1,2.5,2.4,2.2,2.75]);
+
+/* ── Tab switching ── */
+function swAssess(id,btn){
+  document.querySelectorAll('#assessTabs .tab').forEach(t=>t.classList.remove('on'));
+  btn.classList.add('on');
+  ['aCV','aORF','aTime'].forEach(p=>{const el=document.getElementById(p);if(el)el.classList.remove('on');});
+  document.getElementById(id).classList.add('on');
+}
+function swSchool(id,btn){
+  document.querySelectorAll('#schoolTabs .tab').forEach(t=>t.classList.remove('on'));
+  btn.classList.add('on');
+  ['sc1','sc2','sc3','sc4','sc5','sc6','sc7'].forEach(p=>{const el=document.getElementById(p);if(el)el.classList.remove('on');});
+  document.getElementById(id).classList.add('on');
+}
+function swNew(id,btn){
+  document.querySelectorAll('#newSchoolTabs .tab').forEach(t=>t.classList.remove('on'));
+  btn.classList.add('on');
+  ['ns1','ns2','ns3','ns4','ns5','ns6','ns7'].forEach(p=>{const el=document.getElementById(p);if(el)el.classList.remove('on');});
+  document.getElementById(id).classList.add('on');
+}
+
+/* ── Scroll spy ── */
+const ids=['s0','toc','s1','s2','s3','s4','s5','s6','s7','s8','s9'];
+const links=document.querySelectorAll('.snav a');
+window.addEventListener('scroll',()=>{
+  let cur='s0';
+  ids.forEach(id=>{const el=document.getElementById(id);if(el&&el.getBoundingClientRect().top<200)cur=id;});
+  links.forEach(a=>a.classList.toggle('on',a.getAttribute('href')==='#'+cur));
+});
+</script>
+</body>
+</html>
